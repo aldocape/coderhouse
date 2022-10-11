@@ -14,7 +14,7 @@ class Contenedor {
   async save(obj) {
     try {
       // Intento leer el archivo cuyo nombre pasé al constructor
-      var filePath = path.join(__dirname, this.archivo);
+      let filePath = path.resolve(__dirname, this.archivo);
       const content = await fs.promises.readFile(filePath, 'utf8');
 
       // Si salió todo bien, o sea, no se va al catch, entonces almaceno los datos como objeto
@@ -71,7 +71,7 @@ class Contenedor {
   async getById(id) {
     try {
       // Intento leer el archivo, y si existe guardo los datos en un objeto 'info'
-      var filePath = path.join(__dirname, this.archivo);
+      let filePath = path.resolve(__dirname, this.archivo);
       const content = await fs.promises.readFile(filePath, 'utf8');
       const info = JSON.parse(content);
 
@@ -91,7 +91,7 @@ class Contenedor {
   async getAll() {
     try {
       // Intento leer el archivo
-      var filePath = path.join(__dirname, this.archivo);
+      let filePath = path.resolve(__dirname, this.archivo);
       const content = await fs.promises.readFile(filePath, 'utf8');
       // Transformo la data que llegó en un array de objetos
       const info = JSON.parse(content);
@@ -107,7 +107,7 @@ class Contenedor {
   async deleteById(id) {
     try {
       // Intento leer el archivo
-      var filePath = path.join(__dirname, this.archivo);
+      let filePath = path.resolve(__dirname, this.archivo);
       const content = await fs.promises.readFile(filePath, 'utf8');
       // Guardo el contenido en un array de objetos
       const info = JSON.parse(content);
@@ -144,7 +144,7 @@ class Contenedor {
   async deleteAll() {
     try {
       // Intento leer el archivo y guardarle un array vacío
-      var filePath = path.join(__dirname, this.archivo);
+      let filePath = path.resolve(__dirname, this.archivo);
       await fs.promises.writeFile(filePath, JSON.stringify([], null, 2));
       console.log('Todos los productos fueron eliminados!!');
     } catch (err) {
