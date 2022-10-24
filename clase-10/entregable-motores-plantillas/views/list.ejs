@@ -1,0 +1,51 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafío entregable - Motores de plantillas</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="../css/style.css" /> -->
+  </head>
+  <!-- Aquí traigo el style dentro del html porque en algunas ocasiones no carga el css
+    usando el tag 'link' cuando accedo a list.ejs desde el endpoint de "post" después de cargar un producto -->
+  <style>
+    h2.titulo {
+      color: #2528d9;
+      margin: 20px 0;
+    }
+
+    nav {
+      width: 90%;
+      margin: 20px auto;
+    }
+    .w-100 {
+      width: 100%;
+      margin: 0;
+    }
+    .w-100:nth-child(even) {
+      background: hsl(0, 0%, 93%);
+    }
+    .w-100:nth-child(odd) {
+      background: hsl(0, 0%, 98%);
+    }
+    .columns:last-child {
+      margin-bottom: 0;
+    }
+    .column {
+      padding: 0.5%;
+      width: 33%;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <%- include('./partials/productList.ejs', {products: products.products})
+      %>
+    </div>
+  </body>
+</html>

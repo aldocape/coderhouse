@@ -1,0 +1,26 @@
+h2.titulo {
+  color: #2528d9;
+  margin: 20px 0;
+}
+
+nav {
+  width: 90%;
+  margin: 20px auto;
+}
+.w-100 {
+  width: 100%;
+  margin: 0;
+}
+.w-100:nth-child(even) {
+  background: hsl(0, 0%, 93%);
+}
+.w-100:nth-child(odd) {
+  background: hsl(0, 0%, 98%);
+}
+.columns:last-child {
+  margin-bottom: 0;
+}
+.column {
+  padding: 0.5%;
+  width: 33%;
+}

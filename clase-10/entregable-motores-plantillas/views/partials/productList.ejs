@@ -1,0 +1,30 @@
+<h2 class="titulo">Vista de productos</h2>
+<% if (products) { %>
+<div class="panel-block is-flex-wrap-wrap">
+  <div class="columns row w-100">
+    <div class="column p-2">Nombre</div>
+    <div class="column p-2">Precio</div>
+    <div class="column p-2">Foto</div>
+  </div>
+  <% products.forEach(product => { %>
+  <div class="columns row w-100">
+    <div class="column p-2"><%=product.title%></div>
+    <div class="column p-2"><%=product.price%></div>
+    <div class="column p-2">
+      <img src="<%- product.thumbnail %>" />
+    </div>
+  </div>
+  <% }); %>
+</div>
+<% } else { %>
+<h3>No hay productos</h3>
+<% }%>
+<div style="margin: 25px 0">
+  <button
+    type="submit"
+    class="btn btn-success mb-3"
+    onclick="window.location.href='/'"
+  >
+    Volver al formulario de carga
+  </button>
+</div>

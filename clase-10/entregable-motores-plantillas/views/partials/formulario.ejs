@@ -1,0 +1,67 @@
+<h2 class="titulo">Ingrese un producto</h2>
+<form method="POST" action="api/productos" class="row g-3">
+  <div class="mb-3 mt-5 row">
+    <label for="title" class="col-sm-2 col-form-label"
+      >Título del producto</label
+    >
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        placeholder="Título del producto"
+        required
+        oninvalid="this.setCustomValidity('Por favor ingrese el título del producto');"
+        onchange="try{setCustomValidity('')}catch(e){};"
+        x-moz-errormessage="Por favor ingrese el título del producto"
+        autofocus
+      />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="price" class="col-sm-2 col-form-label">Precio</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        id="price"
+        name="price"
+        placeholder="Precio"
+        required
+        oninvalid="this.setCustomValidity('Por favor ingrese el precio del producto');"
+        onchange="try{setCustomValidity('')}catch(e){};"
+        x-moz-errormessage="Por favor ingrese el precio del producto"
+      />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="thumbnail" class="col-sm-2 col-form-label">Foto URL</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        id="thumbnail"
+        name="thumbnail"
+        placeholder="Ingrese aquí la URL"
+        required
+        oninvalid="this.setCustomValidity('Por favor ingrese la imagen del producto');"
+        onchange="try{setCustomValidity('')}catch(e){};"
+        x-moz-errormessage="Por favor ingrese la imagen del producto"
+      />
+    </div>
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-success mb-3">Enviar</button>
+  </div>
+  <div class="col-auto">
+    <button
+      class="btn btn-success mb-3"
+      onclick="event.preventDefault();
+      window.location.replace('/api/productos')"
+      ;
+    >
+      Ver listado de productos
+    </button>
+  </div>
+</form>
