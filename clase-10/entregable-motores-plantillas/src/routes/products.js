@@ -6,7 +6,7 @@ const router = Router();
 // Usaremos el archivo 'products.json' ubicado en la raíz del proyecto
 const productObj = new productsController('../../products.json');
 
-router.post('/', (req, res) => {
+const middlewareValidator = (req, res, next) => {
   // Elimino espacios en blanco a los extremos de los campos de texto
   // y en el caso del precio, lo convierto a 'float' para poder cargar números con decimales
   const title = req.body.title.trim();
@@ -24,6 +24,10 @@ router.post('/', (req, res) => {
       msg: 'Alguno de los campos quedó sin completar, vuelva a ingresar los datos completos en el form',
     });
   }
+  next();
+};
+
+router.post('/', middlewareValidator, (req, res) => {
   // Armo un objeto con los campos ingresados por el usuario
   const newProduct = {
     title,
