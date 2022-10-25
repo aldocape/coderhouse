@@ -24,11 +24,19 @@ const middlewareValidator = (req, res, next) => {
       msg: 'Alguno de los campos quedó sin completar, vuelva a ingresar los datos completos en el form',
     });
   }
+
+  // Cargo las variables en req, para poder usarlas en el endpoint "post"
+  req.title = title;
+  req.price = price;
+  req.thumbnail = thumbnail;
+
   next();
 };
 
 router.post('/', middlewareValidator, (req, res) => {
-  // Armo un objeto con los campos ingresados por el usuario
+  const { title, price, thumbnail } = req;
+
+  // Armo un objeto nuevo, con los campos que trae el middleware
   const newProduct = {
     title,
     price,
