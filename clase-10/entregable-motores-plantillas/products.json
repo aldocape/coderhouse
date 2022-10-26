@@ -22,5 +22,23 @@
     "price": 23.6,
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-64.png",
     "id": "0a43513f-be4c-47a8-a1c8-b980cc0daf5d"
+  },
+  {
+    "title": "Microsoft Word",
+    "price": 12500,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_word-64.png",
+    "id": "7edb660a-e715-49ea-afed-c0daa0e0caaa"
+  },
+  {
+    "title": "Microsoft Excel",
+    "price": 13500,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_excel-64.png",
+    "id": "367cf889-785b-4d48-a1f1-be2392dbf664"
+  },
+  {
+    "title": "Microsoft Powerpoint",
+    "price": 14000,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_powerpoint-64.png",
+    "id": "d432f1a9-e994-4bce-96d7-2350f40b72ad"
   }
 ]

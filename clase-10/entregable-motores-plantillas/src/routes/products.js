@@ -42,12 +42,9 @@ router.post('/', middlewareValidator, (req, res) => {
     price,
     thumbnail,
   };
-  // Luego de cargar el producto en el archivo, llamo al método getAll() para
-  // traer el listado completo y mostrarlo, con la plantilla 'list'
-  productObj.save(newProduct).then((result) => {
-    productObj.getAll().then((products) => {
-      res.render('list', { products });
-    });
+  // Luego de cargar el producto en el archivo, redirijo al mismo formulario
+  productObj.save(newProduct).then(() => {
+    res.render('index');
   });
 });
 
