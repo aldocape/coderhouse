@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head', {hojaEstilo: 'style.css'}); %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+    <main>
+      <div class="main">
+        <h1 class="toplaner"><%- titulo %></h1>
+        <p class="leyenda"><%= min %></p>
+
+        <meter
+          id="meter"
+          min="<%-min%>"
+          max="<%-max%>"
+          value="<%-nivel%>"
+        ></meter>
+
+        <p class="leyenda"><%= max %></p>
+      </div>
+    </main>
+  </body>
+</html>

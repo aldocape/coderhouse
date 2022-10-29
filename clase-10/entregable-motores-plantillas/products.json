@@ -40,5 +40,23 @@
     "price": 14000,
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_powerpoint-64.png",
     "id": "d432f1a9-e994-4bce-96d7-2350f40b72ad"
+  },
+  {
+    "title": "Facebook",
+    "price": 189.56,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_facebook-64.png",
+    "id": "469b86a0-3ded-46be-baf4-8f089ec63fcf"
+  },
+  {
+    "title": "Instagram",
+    "price": 555,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_instagram-64.png",
+    "id": "1a878f0d-d8dd-4e34-b545-f39c0439e135"
+  },
+  {
+    "title": "LinkedIn",
+    "price": 292.44,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_linkedin-64.png",
+    "id": "a677c2fb-56ea-423f-8b8e-5b1913b458a4"
   }
 ]

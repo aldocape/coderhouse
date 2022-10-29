@@ -7,7 +7,7 @@ const contenedor = require('../claseContenedor');
 
 // Creo un objeto tienda a partir de la clase contenedor
 // Asignando '../products.txt' como nombre de archivo porque está un nivel hacia arriba
-const tienda = new contenedor('../products.txt');
+const tienda = new contenedor('../products.json');
 
 // Consignas
 
@@ -46,10 +46,15 @@ routerProductos.post('/', async (req, res) => {
   const result = await tienda.save(productoNuevo);
 
   if (result.success) {
-    res.status(201).json({
+    // res.status(201).json({
+    //   msg: 'Producto creado con éxito',
+    //   productoNuevo,
+    // });
+    console.log({
       msg: 'Producto creado con éxito',
       productoNuevo,
     });
+    res.redirect('/');
   } else {
     res.json({
       msg: 'Hubo un error al cargar el nuevo producto',

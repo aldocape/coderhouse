@@ -1,0 +1,30 @@
+/*estilo para todos los tags li*/
+li {
+  width: 500px;
+  margin: 4px;
+  padding: 4px;
+  /* list-style: none */
+}
+
+tr td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+/*estilos personalizados*/
+.midlaner {
+  background-color: #eeeeee;
+}
+.toplaner {
+  background-color: #ffea00;
+}
+
+h2.titulo {
+  color: #2528d9;
+  margin: 20px 0 50px 0;
+}
+
+h2.historial {
+  color: #ca141d;
+  margin: 40px 0;
+}

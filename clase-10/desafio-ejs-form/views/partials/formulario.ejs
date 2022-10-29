@@ -1,0 +1,64 @@
+<h2 class="titulo">Ingrese datos</h2>
+<form method="POST" action="api/personas" class="row g-3">
+  <div class="mb-3 row">
+    <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        name="nombre"
+        placeholder="Nombre"
+        required
+      />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        id="apellido"
+        name="apellido"
+        placeholder="Apellido"
+        required
+      />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="edad" class="col-sm-2 col-form-label">Edad</label>
+    <div class="col-sm-10">
+      <input
+        type="number"
+        class="form-control"
+        id="edad"
+        name="edad"
+        placeholder="Edad"
+        required
+      />
+    </div>
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+  </div>
+</form>
+
+<!-- 
+<form method="POST" action="api/personas">
+  <div>
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" required />
+  </div>
+  <div>
+    <label for="apellido">Apellido</label>
+    <input type="text" name="apellido" required />
+  </div>
+  <div>
+    <label for="edad">Edad</label>
+    <input type="text" name="edad" required />
+  </div>
+  <div>
+    <input type="submit" value="Enviar" />
+  </div>
+</form> -->

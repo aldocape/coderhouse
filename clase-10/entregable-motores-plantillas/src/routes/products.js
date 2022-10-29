@@ -1,10 +1,7 @@
 const { Router } = require('express');
-const productsController = require('../controller/products');
+const productObj = require('../controller/products');
 
 const router = Router();
-
-// Usaremos el archivo 'products.json' ubicado en la raíz del proyecto
-const productObj = new productsController('../../products.json');
 
 const middlewareValidator = (req, res, next) => {
   // Elimino espacios en blanco a los extremos de los campos de texto

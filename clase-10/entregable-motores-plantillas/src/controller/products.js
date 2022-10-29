@@ -13,7 +13,7 @@ class Contenedor {
   // o en caso contrario le asigna id = último id + 1
 
   async save(obj) {
-    let filePath = path.resolve(__dirname, this.archivo);
+    const filePath = path.resolve(__dirname, this.archivo);
     try {
       // Intento leer el archivo cuyo nombre pasé al constructor
 
@@ -82,7 +82,7 @@ class Contenedor {
   async getById(id) {
     try {
       // Intento leer el archivo, y si existe guardo los datos en un objeto 'info'
-      let filePath = path.resolve(__dirname, this.archivo);
+      const filePath = path.resolve(__dirname, this.archivo);
       const content = await fs.promises.readFile(filePath, 'utf8');
       const info = JSON.parse(content);
 
@@ -134,7 +134,7 @@ class Contenedor {
   // Método que elimina un producto con un id determinado
   // No devuelve un resultado
   async deleteById(id) {
-    let filePath = path.resolve(__dirname, this.archivo);
+    const filePath = path.resolve(__dirname, this.archivo);
     try {
       // Intento leer el archivo
       const content = await fs.promises.readFile(filePath, 'utf8');
@@ -181,7 +181,7 @@ class Contenedor {
   async deleteAll() {
     try {
       // Intento leer el archivo y guardarle un array vacío
-      let filePath = path.resolve(__dirname, this.archivo);
+      const filePath = path.resolve(__dirname, this.archivo);
       await fs.promises.writeFile(filePath, JSON.stringify([], null, 2));
       return {
         success: true,
@@ -196,7 +196,7 @@ class Contenedor {
   }
   // Método que actualiza los campos de un producto
   async update(obj) {
-    let filePath = path.resolve(__dirname, this.archivo);
+    const filePath = path.resolve(__dirname, this.archivo);
     try {
       // Intento leer el archivo
 
@@ -241,4 +241,7 @@ class Contenedor {
   }
 }
 
-module.exports = Contenedor;
+// Usaremos el archivo 'products.json' ubicado en la raíz del proyecto
+const productObj = new Contenedor('../../products.json');
+
+module.exports = productObj;

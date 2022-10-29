@@ -34,5 +34,23 @@
     "title": "Libro \"Comunicacion No Violenta - Marshall B. Rosenberg\"",
     "price": "2945",
     "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_976035-MLA48207066729_112021-O.webp"
+  },
+  {
+    "id": "bfb243ef-a558-4842-a926-2cbd876314c7",
+    "title": "Bicicleta",
+    "price": "250",
+    "thumbnail": ""
+  },
+  {
+    "id": "debf5016-b38b-4ef1-90e5-d10ab45fac10",
+    "title": "Un producto nuevo",
+    "price": "1234",
+    "thumbnail": "rosa.com"
+  },
+  {
+    "id": "e0a66f8e-c658-4797-95ee-d713a52b039e",
+    "title": "Pelota Al Rihla League Box - Blanco adidas",
+    "price": "19999",
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_961380-MLA49566978180_042022-O.webp"
   }
 ]
