@@ -1,0 +1,24 @@
+<hr />
+<h2 class='titulo_con_margen'>Lista de productos</h2>
+
+<div class='panel-block is-flex-wrap-wrap' id='tabla'>
+  {{#if products}}
+
+    <div class='columns row w-100'>
+      <div class='column p-2'>Nombre</div>
+      <div class='column p-2'>Precio</div>
+      <div class='column p-2'>Foto</div>
+    </div>
+
+    {{#each products}}
+      <div class='columns row w-100'>
+        <div class='column p-2'>{{this.title}}</div>
+        <div class='column p-2'>{{this.price}}</div>
+        <div class='column p-2'>
+          <img src='{{this.thumbnail}}' />
+        </div>
+      </div>
+    {{/each}}
+
+  {{/if}}
+</div>

@@ -1,0 +1,20 @@
+[
+  {
+    "user": "pedro@gmail.com",
+    "text": "Hola!",
+    "time": "31/01/2021 12:26:47",
+    "id": "5f8c65c5-2573-4873-bafd-425aed7d6fea"
+  },
+  {
+    "user": "lucia@hotmail.com",
+    "text": "que tal?",
+    "time": "31/01/2021 12:28:00",
+    "id": "5ad138ef-53f9-429d-9a68-77ec7cc46119"
+  },
+  {
+    "user": "diego@outlook.com",
+    "text": "Cómo están todos?",
+    "time": "31/01/2021 12:28:40",
+    "id": "375b5648-7f92-42f3-a9b7-0f3cede84a2b"
+  }
+]
