@@ -6,6 +6,10 @@
     id='userEmail'
     class='inputEmail'
     placeholder='alguien@ejemplo.com.ar'
+    required
+    oninvalid="this.setCustomValidity('Debe ingresar un valor con formato E-Mail');"
+    onchange="try{setCustomValidity('')}catch(e){};"
+    x-moz-errormessage='Debe ingresar un valor con formato E-Mail'
   />
   <hr />
   <div class='chat-messages'></div>
