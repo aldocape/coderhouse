@@ -13,24 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const moment_1 = __importDefault(require("moment"));
 const carts_1 = __importDefault(require("../controller/carts"));
 const products_1 = __importDefault(require("../controller/products"));
 const router = express_1.Router();
 // Recibe un producto por body y crea un carrito, y lo devuelve con su id asignado
 // Endpoint: /api/carrito Método: POST
 router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // const { title, price, thumbnail, msg, success } = req;
-    const timestamp = new Date();
-    // const producto: Producto = {
-    //   id: req.body.prodId,
-    //   timestamp: req.body.prodTimeStamp,
-    //   nombre: req.body.prodNombre,
-    //   descripcion: req.body.prodDescripcion,
-    //   codigo: req.body.prodCodigo,
-    //   foto: req.body.prodFoto,
-    //   precio: req.body.prodPrecio,
-    //   stock: req.body.prodStock,
-    // };
+    const timestamp = moment_1.default().format('DD/MM/YYYY hh:mm:ss');
     const cart = {
         timestamp,
         productos: [],

@@ -13,16 +13,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const moment_1 = __importDefault(require("moment"));
 const products_1 = __importDefault(require("../controller/products"));
 const auth_1 = __importDefault(require("../middlewares/auth"));
+const inputValidation_1 = require("../middlewares/inputValidation");
 const router = express_1.Router();
 // Recibe y agrega un producto, y lo devuelve con su id asignado
 // Endpoint: /api/productos Método: POST
-router.post('/', auth_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // const { title, price, thumbnail, msg, success } = req;
-    const { nombre, descripcion, codigo, foto, precio, stock } = req.body;
+router.post('/', auth_1.default, inputValidation_1.middlewareValidator, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { nombre, descripcion, codigo, foto, precio, stock } = req.productData;
     const newProduct = {
-        timestamp: Date.now(),
+        timestamp: moment_1.default().format('DD/MM/YYYY hh:mm:ss'),
         nombre,
         descripcion,
         codigo,
@@ -50,7 +51,7 @@ router.put('/:id', auth_1.default, (req, res) => __awaiter(void 0, void 0, void 
     const { nombre, descripcion, codigo, foto, precio, stock } = req.body;
     const modifiedProduct = {
         id: req.params.id,
-        timestamp: Date.now(),
+        timestamp: moment_1.default().format('DD/MM/YYYY hh:mm:ss'),
         nombre,
         descripcion,
         codigo,

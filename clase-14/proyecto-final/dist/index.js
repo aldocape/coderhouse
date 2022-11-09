@@ -6,5 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = __importDefault(require("./services/server"));
 const config_1 = require("./config/config");
 server_1.default.listen(config_1.PORT, () => {
-    console.log(`Server up en puerto ${config_1.PORT}`);
+    console.log(`🚀 Servidor escuchando en el puerto ${config_1.PORT}`);
 });
