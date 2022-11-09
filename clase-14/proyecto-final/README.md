@@ -31,3 +31,38 @@ La aplicación implementa un servidor de aplicación basado en la plataforma Nod
 
 Para la transpilación de TypeScript a Javascript, usar el script: npm run build
 Para la ejecución de la aplicación en modo desarrollador, usar el script: npm run dev
+
+Carga de Productos:
+
+curl --location --request POST '127.0.0.1:8080/api/productos/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"nombre": "Colchón 2 1/2 plazas de espuma Piero box blanco y gris - 140cm x 190cm x 25cm",
+"descripcion": "Construido con espuma de poliuretano, el colchón tiene una larga y duradera vida. Este tipo de material hace que la posición que adopte el cuerpo sea ergonómica y permite que se reparta el peso sobre la superficie de manera balanceada.",
+"codigo": "Piero2331",
+"foto": "https://http2.mlstatic.com/D_NQ_NP_622492-MLA48099676614_112021-O.webp",
+"precio": 61619,
+"stock": 3
+}'
+
+curl --location --request POST '127.0.0.1:8080/api/productos/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"nombre": "Microondas Tedge 20 Litros Digital Blanco 220v 5 Potencia",
+"descripcion": "Somos TEDGE. Nos propusimos crear productos de tecnología con alta calidad, ofreciendo a nuestros compradores una gran variedad y los mejores precios del mercado.",
+"codigo": "Tedge4890",
+"foto": "https://http2.mlstatic.com/D_NQ_NP_984100-MLA48430605662_122021-O.webp",
+"precio": 20999,
+"stock": 6
+}'
+
+curl --location --request POST '127.0.0.1:8080/api/productos/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"nombre": "Google Chromecast 3.ª Generación Full Hd Carbón",
+"descripcion": "Gracias a su compatibilidad con streaming en Full HD vas a aprovechar de todo el contenido disponible que más te guste en alta definición, con imágenes de colores más vibrantes y llamativos en comparación a su predecesor HD.",
+"codigo": "SKU GA00439-LA",
+"foto": "https://http2.mlstatic.com/D_NQ_NP_620605-MLA32691559317_102019-O.webp",
+"precio": 12499,
+"stock": 10
+}'

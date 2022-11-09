@@ -3,14 +3,15 @@ import { Producto } from '../interfaces';
 import moment from 'moment';
 import prodInstance from '../controller/products';
 import auth from '../middlewares/auth';
+import { middlewareValidator } from '../middlewares/inputValidation';
 
 const router = Router();
 
 // Recibe y agrega un producto, y lo devuelve con su id asignado
 // Endpoint: /api/productos Método: POST
-router.post('/', auth, async (req: Request, res: Response) => {
-  // const { title, price, thumbnail, msg, success } = req;
-  const { nombre, descripcion, codigo, foto, precio, stock } = req.body;
+router.post('/', auth, middlewareValidator, async (req: any, res: Response) => {
+  const { nombre, descripcion, codigo, foto, precio, stock } = req.productData;
+
   const newProduct: Producto = {
     timestamp: moment().format('DD/MM/YYYY hh:mm:ss'),
     nombre,

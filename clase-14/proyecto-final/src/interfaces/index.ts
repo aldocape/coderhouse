@@ -4,7 +4,7 @@ interface Producto {
   id?: String;
   timestamp: String;
   nombre: String;
-  descripcion: String;
+  descripcion?: String;
   codigo: String;
   foto?: String;
   precio: Number;
