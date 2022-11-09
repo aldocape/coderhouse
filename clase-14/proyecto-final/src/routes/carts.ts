@@ -9,20 +9,7 @@ const router = Router();
 // Recibe un producto por body y crea un carrito, y lo devuelve con su id asignado
 // Endpoint: /api/carrito Método: POST
 router.post('/', async (req: Request, res: Response) => {
-  // const { title, price, thumbnail, msg, success } = req;
-
   const timestamp = moment().format('DD/MM/YYYY hh:mm:ss');
-
-  // const producto: Producto = {
-  //   id: req.body.prodId,
-  //   timestamp: req.body.prodTimeStamp,
-  //   nombre: req.body.prodNombre,
-  //   descripcion: req.body.prodDescripcion,
-  //   codigo: req.body.prodCodigo,
-  //   foto: req.body.prodFoto,
-  //   precio: req.body.prodPrecio,
-  //   stock: req.body.prodStock,
-  // };
 
   const cart: Carrito = {
     timestamp,

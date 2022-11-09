@@ -32,6 +32,8 @@ La aplicación implementa un servidor de aplicación basado en la plataforma Nod
 Para la transpilación de TypeScript a Javascript, usar el script: npm run build
 Para la ejecución de la aplicación en modo desarrollador, usar el script: npm run dev
 
+Ejemplos que se probaron en Postman:
+
 Carga de Productos:
 
 curl --location --request POST '127.0.0.1:8080/api/productos/' \
@@ -66,3 +68,29 @@ curl --location --request POST '127.0.0.1:8080/api/productos/' \
 "precio": 12499,
 "stock": 10
 }'
+
+Creación de un carrito (vacío, sólo con la fecha y hora de la creación, posteriormente se le agregan productos de a uno)
+
+curl --location --request POST '127.0.0.1:8080/api/carrito'
+
+Agrego dos productos al carrito
+
+curl --location --request POST '127.0.0.1:8080/api/carrito/19e69392-8418-46d5-a570-9cd610db04f4/productos' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"productId": "9d5a079c-38f3-4788-b5a3-0a5907b9ef70"
+}'
+
+curl --location --request POST '127.0.0.1:8080/api/carrito/19e69392-8418-46d5-a570-9cd610db04f4/productos' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"productId": "7e1845d6-6aaa-4926-bff6-db3a291c40cb"
+}'
+
+Elimino un producto del carrito
+
+curl --location --request DELETE '127.0.0.1:8080/api/carrito/19e69392-8418-46d5-a570-9cd610db04f4/productos/9d5a079c-38f3-4788-b5a3-0a5907b9ef70'
+
+Elimino un carrito
+
+curl --location --request DELETE '127.0.0.1:8080/api/carrito/19e69392-8418-46d5-a570-9cd610db04f4'

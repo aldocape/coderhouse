@@ -30,30 +30,13 @@
     "id": "b7b3d4ec-bdaa-45b7-9a5d-9f2088c64daf"
   },
   {
-    "timestamp": "09/11/2022 07:49:54",
-    "nombre": "Google Chromecast 3.ª Generación Full Hd Carbón",
-    "codigo": "SKU GA00439-LA",
+    "id": "e1d80f57-05ff-4a98-ba06-b2a351a01a0c",
+    "timestamp": "09/11/2022 07:55:35",
+    "nombre": "Google Chromecast 4.ª Generación Full Hd Carbono",
+    "descripcion": "Es un dispositivo tremendo",
+    "codigo": "SKU GA08899-LA",
     "foto": "https://http2.mlstatic.com/D_NQ_NP_620605-MLA32691559317_102019-O.webp",
-    "precio": 12499,
-    "stock": 10,
-    "id": "dc536aa9-2c6b-440b-bd4c-7c989a643b11"
-  },
-  {
-    "timestamp": "09/11/2022 07:50:14",
-    "nombre": "Google Chromecast 3.ª Generación Full Hd Carbón",
-    "codigo": "SKU GA00439-LA",
-    "foto": "https://http2.mlstatic.com/D_NQ_NP_620605-MLA32691559317_102019-O.webp",
-    "precio": 12499,
-    "stock": 10,
-    "id": "e1d80f57-05ff-4a98-ba06-b2a351a01a0c"
-  },
-  {
-    "timestamp": "09/11/2022 07:51:31",
-    "nombre": "Google Chromecast 3.ª Generación Full Hd Carbón",
-    "codigo": "SKU GA00439-LA",
-    "foto": "https://http2.mlstatic.com/D_NQ_NP_620605-MLA32691559317_102019-O.webp",
-    "precio": 45,
-    "stock": 0,
-    "id": "1195f2e6-e209-445b-81a0-a9872ca9238c"
+    "precio": 45000,
+    "stock": 3
   }
 ]
