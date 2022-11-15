@@ -68,7 +68,7 @@ class SQLClient {
       },
       {
         timestamp: '09/11/2022 07:35:19',
-        nombre: 'Google Chromecast 3.ª Generación Full Hd Carbón',
+        nombre: 'Google Chromecast 3ª Generación Full Hd Carbón',
         descripcion:
           'Gracias a su compatibilidad con streaming en Full HD vas a aprovechar de todo el contenido disponible que más te guste en alta definición, con imágenes de colores más vibrantes y llamativos en comparación a su predecesor HD.',
         codigo: 'SKU GA00439-LA',

@@ -1,8 +1,7 @@
 import { Router, Response } from 'express';
 import { Mensaje } from '../interfaces';
-import moment from 'moment';
+import { formatMessage } from '../utils/messages';
 import { add, getAll } from '../controller/messages';
-
 import { inputMsgValidator } from '../middlewares/inputValidation';
 
 const router = Router();
@@ -11,12 +10,7 @@ const router = Router();
 // Endpoint: /api/mensajes Método: POST
 router.post('/', inputMsgValidator, async (req: any, res: Response) => {
   const { user, text } = req.msgData;
-
-  const msg: Mensaje = {
-    time: moment().format('DD/MM/YYYY hh:mm:ss'),
-    user,
-    text,
-  };
+  const msg: Mensaje = formatMessage(user, text);
 
   const newMsg = await add(msg);
 

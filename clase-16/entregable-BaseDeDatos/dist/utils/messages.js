@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.formatMessage = void 0;
-// const moment = require('moment');
 const moment_1 = __importDefault(require("moment"));
 // Función auxiliar para darle formato a la fecha y la hora en el centro de mensajes
 function formatMessage(user, text) {
@@ -15,4 +14,3 @@ function formatMessage(user, text) {
     };
 }
 exports.formatMessage = formatMessage;
-// module.exports = formatMessage;

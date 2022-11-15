@@ -65,7 +65,7 @@ fetch('/api/mensajes')
 // Armo el túnel con el server (Handshake)
 const socket = io.connect();
 
-// función que utilizo para poder acceder a la API usando POST, porque da error usando res.render en el endpoint 'POST' de la API
+// función que utilizo para poder acceder a la API usando POST
 async function guardarEnBD(endpoint = '/productos', body = undefined) {
   if (body) {
     body = JSON.stringify(body);

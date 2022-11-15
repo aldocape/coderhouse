@@ -2,6 +2,6 @@
 const PORT: number | string = process.env.PORT || 8080;
 
 // Variable booleana para indicar si el usuario es o no un Administrador
-const isAdmin: boolean = false;
+const isAdmin: boolean = true;
 
 export { PORT, isAdmin };
