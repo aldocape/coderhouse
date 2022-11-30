@@ -1,38 +1,40 @@
-<h2 class="titulo">Vista de productos</h2>
-<% if (products) { %>
+<div class="contenedor">
+  <h2 class="titulo">Vista de productos</h2>
+  <% if (products) { %>
 
-<div class="row" id="tabla">
-  <% products.forEach(product => { %>
+  <div class="row" id="tabla">
+    <% products.forEach(product => { %>
 
-  <div class="col-sm-4">
-    <div class="card">
-      <img
-        style="max-height: 200px"
-        class="card-img-top"
-        src="<%- product.foto %>"
-        alt="Imagen del producto"
-      />
-      <div class="card-body">
-        <h5 class="card-title"><%=product.nombre%></h5>
-        <p class="card-text"><%=product.descripcion%></p>
-        <p class="card-text">Precio: $<%=product.precio%></p>
+    <div class="col-sm-4">
+      <div class="card">
+        <img
+          style="max-height: 200px"
+          class="card-img-top"
+          src="<%- product.foto %>"
+          alt="Imagen del producto"
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%=product.nombre%></h5>
+          <p class="card-text"><%=product.descripcion%></p>
+          <p class="card-text">Precio: $<%=product.precio%></p>
+        </div>
       </div>
     </div>
+
+    <% }); %>
   </div>
 
-  <% }); %>
-</div>
+  <% } else { %>
 
-<% } else { %>
-
-<h3>No hay productos</h3>
-<% }%>
-<div style="margin: 25px 0">
-  <button
-    type="submit"
-    class="btn btn-success mb-3"
-    onclick="window.location.href='/'"
-  >
-    Volver al formulario de carga
-  </button>
+  <h3>No hay productos</h3>
+  <% }%>
+  <div style="margin: 25px 0">
+    <button
+      type="submit"
+      class="btn btn-success mb-3"
+      onclick="window.location.href='/'"
+    >
+      Volver al formulario de carga
+    </button>
+  </div>
 </div>
