@@ -34,8 +34,7 @@ nav {
   width: 33%;
 }
 
-/* Div para contener formulario de carga de productos y listado de productos por un lado,
-    y centro de mensajes por otro lado */
+/* Div para contener formulario de carga de productos y listado de productos por un lado */
 
 div.contenedor {
   background-color: #eaeaea;
@@ -43,30 +42,8 @@ div.contenedor {
   margin: 25px 0;
 }
 
-.inputEmail {
-  margin: 20px 0;
-}
+/* Mensaje informativo en formulario de carga de productos */
 
-.inputMessage {
-  margin: 25px 0;
-}
-
-.btnMessage {
-  margin-top: 0.8rem;
-}
-
-/* Estilos para mensajes del chat */
-
-span.negritaAzul {
-  color: blue;
-  font-weight: bold;
-}
-
-span.normalMarron {
-  color: brown;
-}
-
-span.italicVerde {
-  color: green;
-  font-style: italic;
+div#msgProd {
+  color: red;
 }
