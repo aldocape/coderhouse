@@ -28,5 +28,23 @@
     "price": 123.45,
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-64.png",
     "id": "33eb2407-4068-4bfd-a3d2-807d9ca024e5"
+  },
+  {
+    "title": "Pizarra",
+    "price": 123.78,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-64.png",
+    "id": "ccd9b0e4-9d80-4211-8c6e-680502c7ae0d"
+  },
+  {
+    "title": "Mochila",
+    "price": 554.11,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bag-pack-container-school-64.png",
+    "id": "a43615a2-228a-432c-a195-037fdac6422c"
+  },
+  {
+    "title": "Reloj",
+    "price": 880,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-64.png",
+    "id": "15bb17c1-9d09-49e1-bc1f-a6b787d8afa3"
   }
 ]

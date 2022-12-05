@@ -1,0 +1,28 @@
+<h2 class='titulo'>Vista de productos</h2>
+<div class='contenido'></div>
+{{#if products}}
+  <div class='panel-block is-flex-wrap-wrap'>
+    <div class='columns row w-100'>
+      <div class='column p-2'>Nombre</div>
+      <div class='column p-2'>Precio</div>
+      <div class='column p-2'>Foto</div>
+    </div>
+    <div class='productsList'>
+      {{#each products}}
+        <div class='columns row w-100'>
+          <div class='column p-2'>{{this.title}}</div>
+          <div class='column p-2'>{{this.price}}</div>
+          <div class='column p-2'>
+            <img src='{{this.thumbnail}}' />
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+{{else}}
+
+  <div class='productsList'>
+    <h3>No hay productos</h3>
+  </div>
+{{/if}}
