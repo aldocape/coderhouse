@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Trabajo Práctico Entregable - Base de Datos</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="m-4">
+        Trabajo práctico entregable con uso de Faker-js y Normalizr
+      </h2>
+      <div class="contenedor">
+        <h2 class="titulo_con_margen">Lista de productos</h2>
+
+        <div class="row" id="tabla"></div>
+      </div>
+      <div class="contenedor">
+        <h2 class="titulo">Centro de mensajes</h2>
+
+        <div class="chat-messages"></div>
+        <div class="chat-messages-normalized"></div>
+        <div class="chat-messages-desnormalized"></div>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

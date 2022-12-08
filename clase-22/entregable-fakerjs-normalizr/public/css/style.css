@@ -1,0 +1,72 @@
+p {
+  margin-bottom: 0.5rem;
+}
+
+h2.titulo {
+  color: #2528d9;
+  margin: 20px 0;
+}
+
+h2.titulo_con_margen {
+  color: #c31f1f;
+  margin: 30px 0;
+}
+
+nav {
+  width: 90%;
+  margin: 20px auto;
+}
+.w-100 {
+  width: 100%;
+  margin: 0;
+}
+.w-100:nth-child(even) {
+  background: hsl(0, 0%, 93%);
+}
+.w-100:nth-child(odd) {
+  background: hsl(0, 0%, 98%);
+}
+.columns:last-child {
+  margin-bottom: 0;
+}
+.column {
+  padding: 0.5%;
+  width: 33%;
+}
+
+/* Div para contener formulario de carga de productos y listado de productos por un lado,
+  y centro de mensajes por otro lado */
+
+div.contenedor {
+  background-color: #eaeaea;
+  padding: 25px;
+  margin: 25px 0;
+}
+
+.inputEmail {
+  margin: 20px 0;
+}
+
+.inputMessage {
+  margin: 25px 0;
+}
+
+.btnMessage {
+  margin-top: 0.8rem;
+}
+
+/* Estilos para mensajes del chat */
+
+span.negritaAzul {
+  color: blue;
+  font-weight: bold;
+}
+
+span.normalMarron {
+  color: brown;
+}
+
+span.italicVerde {
+  color: green;
+  font-style: italic;
+}
