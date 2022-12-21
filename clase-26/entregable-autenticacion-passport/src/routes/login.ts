@@ -35,7 +35,10 @@ const storeOptions = {
   },
 };
 
-const passportOptions: any = { badRequestMessage: 'Falta username o password' };
+const passportOptions: any = {
+  badRequestMessage: 'Falta username o password',
+  failureRedirect: '/login',
+};
 
 loginRouter.use(cookieParser());
 
