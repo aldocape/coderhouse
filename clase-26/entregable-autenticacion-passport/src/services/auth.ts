@@ -45,7 +45,8 @@ const login = async (
 
     if (!user) {
       return done(null, false, {
-        msg: 'Acceso denegado: Usuario no existe en el sistema',
+        type: 'signUpMessage',
+        message: 'El usuario no existe en el sistema',
       });
     } else {
       // Si el usuario existe, comparo la password que llega con la de la BD, con el método matchPassword
@@ -58,7 +59,8 @@ const login = async (
       } else {
         // res.json({ msg: 'Error: La contraseña ingresada es incorrecta' });
         return done(null, false, {
-          msg: 'Error: La contraseña ingresada es incorrecta',
+          type: 'signUpMessage',
+          message: 'La contraseña ingresada es incorrecta',
         });
       }
     }
