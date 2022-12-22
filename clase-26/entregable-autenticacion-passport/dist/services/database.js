@@ -14,12 +14,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.disconnectMongo = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const connectionString = process.env.MONGO_ATLAS_SRV ||
-    'mongodb://aldo:123456@localhost:27017/ecommerce';
+const config_1 = __importDefault(require("../config"));
+const connectionString = config_1.default.MONGO_ATLAS_URL;
 // Conexión a la BD de Mongo
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log('Connecting...');
+        mongoose_1.default.set('strictQuery', false);
         const db = yield mongoose_1.default.connect(connectionString);
         console.log('Database is connected to:', db.connection.name);
     }

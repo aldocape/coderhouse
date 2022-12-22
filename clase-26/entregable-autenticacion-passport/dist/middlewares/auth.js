@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const config_1 = require("../config/config");
+// Modificar esta variable por la info de sesión cuando esté implementado
+const isAdmin = true;
 // Middleware de autenticación de usuario (si es o no un Administrador)
 const authenticate = (req, res, next) => {
-    if (config_1.isAdmin)
+    if (isAdmin)
         next();
     else {
         res.status(401).json({

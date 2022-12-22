@@ -3,13 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// Importo dotenv para traer variables de entorno
-require("dotenv/config");
+const config_1 = __importDefault(require("./config"));
 const server_1 = __importDefault(require("./services/server"));
 // La conexión a la base de datos de MongoDB Atlas la ejecuto directamente en el script database
 require("./services/database");
 // Utilizo el puerto de escucha 8080 para desarrollo y process.env.PORT para producción
-const PORT = process.env.PORT || 8080;
+const PORT = config_1.default.PORT;
 server_1.default.listen(PORT, () => {
     console.log(`🚀 Servidor escuchando en el puerto ${PORT}`);
 });

@@ -36,7 +36,6 @@ router.post('/', auth_1.default, inputValidation_1.middlewareValidatorInsert, (r
         };
         const newProd = yield products_1.default.add(newProduct);
         res.status(201).json({
-            success: true,
             msg: 'Producto creado con éxito',
             newProd,
         });
@@ -76,7 +75,8 @@ router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         // Traigo todos los productos y los devuelvo en un json
         const products = yield products_1.default.getAll();
         if (products) {
-            res.render('list', { products });
+            res.json(products);
+            // res.render('list', { products });
         }
         else {
             res.status(400).json({

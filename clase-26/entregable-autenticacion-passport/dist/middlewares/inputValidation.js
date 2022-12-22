@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.middlewareValidatorUpdate = exports.middlewareValidatorInsert = void 0;
+exports.inputMsgValidator = exports.middlewareValidatorUpdate = exports.middlewareValidatorInsert = void 0;
 const middlewareValidatorInsert = (req, res, next) => {
     if (!req.body.nombre || !req.body.codigo || !req.body.precio)
         return res.status(400).json({
@@ -72,3 +72,24 @@ const middlewareValidatorUpdate = (req, res, next) => {
     next();
 };
 exports.middlewareValidatorUpdate = middlewareValidatorUpdate;
+const inputMsgValidator = (req, res, next) => {
+    // Elimino espacios en blanco a los extremos de los campos de texto
+    const author = req.body.author;
+    const email = author.email.trim();
+    const text = req.body.text.trim();
+    // Valido los campos ingresados
+    if (!email || !text) {
+        return res.status(400).json({
+            success: false,
+            msg: 'Alguno de los campos quedó sin completar, vuelva a ingresar los datos completos en el formulario',
+        });
+    }
+    req.body.author.email = email;
+    // Cargo los valores de los campos en req, para poder usarlas en el endpoint "post"
+    req.msgData = {
+        author: req.body.author,
+        text,
+    };
+    next();
+};
+exports.inputMsgValidator = inputMsgValidator;
