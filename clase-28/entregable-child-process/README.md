@@ -8,10 +8,13 @@ Notar que en package.json hay un script "start" que ya cuenta con algunos parám
 
 Se agregó una ruta '/info' que presenta en una vista sencilla los siguientes datos:
 
-- Argumentos de entrada - Path de ejecución
-- Nombre de la plataforma (sistema operativo) - Process id
-- Versión de node.js - Carpeta del proyecto
+- Argumentos de entrada
+- Nombre de la plataforma (sistema operativo)
+- Versión de node.js
 - Memoria total reservada (rss)
+- Path de ejecución
+- Process id
+- Carpeta del proyecto
 
 Se agregó otra ruta '/api/randoms' que permite calcular un cantidad de números aleatorios en el rango del 1 al 1000 especificada por parámetros de consulta (query).
 Por ej: /api/randoms?cant=20000.
