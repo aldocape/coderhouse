@@ -2,7 +2,7 @@
 
 Todas las claves y credenciales utilizadas (en este caso se hizo solamente con el string de conexión de MongoDB) se han movido a un archivo .env, que se carga mediante la librería dotenv en la ruta config/index.ts, y luego se importa en services/database.ts.
 
-La única configuración que no ha sido manejada con esta librería fue la del puerto de escucha del servidor, el cual es leído de los argumentos pasados por línea de comandos, usando la librería yargs. Esta funcionalidad está implementada en ruta services/server.ts (en la línea 17 seteo el valor por default que tendrá la variable 'port' en caso de que no se pase por línea de comandos).
+La única configuración que no ha sido manejada con esta librería fue la del puerto de escucha del servidor, el cual es leído de los argumentos pasados por línea de comandos, usando la librería yargs. Esta funcionalidad está implementada en ruta services/server.ts (en la línea 14 seteo el valor por default que tendrá la variable 'port' en caso de que no se pase por línea de comandos).
 
 Notar que en package.json hay un script "start" que ya cuenta con algunos parámetros de prueba definidos
 
