@@ -1,0 +1,44 @@
+<div class="contenedor">
+  <h2 class="titulo">Registro de Usuario</h2>
+
+  <form action="/signup" method="post" autocomplete="off">
+    <div class="mb-3 mt-5 row">
+      <label for="nombre" class="col-sm-3 col-form-label"
+        ><i><strong>Ingrese su E-mail</strong></i></label
+      >
+      <div class="col-sm-9 mb-4">
+        <input
+          id="username"
+          class="form-control"
+          type="text"
+          name="username"
+          required
+        />
+      </div>
+      <label for="password" class="col-sm-3 col-form-label"
+        ><i><strong>Ingrese su contraseña</strong></i></label
+      >
+      <div class="col-sm-9">
+        <input
+          id="password"
+          class="form-control"
+          type="password"
+          name="password"
+          required
+        />
+      </div>
+    </div>
+    <button id="btnRegNewUser" class="btn btn-success mt-5 mb-3">
+      Register
+    </button>
+    <div id="msgRegister" style="color: red"><%=msg%></div>
+  </form>
+  <hr />
+  <button
+    id="btnLoginPage"
+    class="btn btn-success mt-3"
+    onclick="document.location.href = '/login'"
+  >
+    Ir a Login
+  </button>
+</div>

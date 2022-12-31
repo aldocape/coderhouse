@@ -1,0 +1,31 @@
+Comandos de prueba forever (con el modo watch activado):
+
+forever start dist/index.js -w --port=8080 --mode=fork
+forever start dist/index.js -w --port=8081 --mode=cluster
+forever start dist/index.js -w --port=8086 --mode=fork
+
+Detener un proceso forever: forever stop (id) - - Ejemplo: forever stop 0
+Detener todos los procesos forever: forever stopall
+
+Comandos de prueba pm2 (con el modo watch activado):
+
+Modo 'fork'
+pm2 start dist/index.js --watch --name=app1
+
+Modo 'cluster'
+pm2 start dist/index.js --watch -i max --name=app2
+
+Modo 'fork' con parámetros
+pm2 start dist/index.js --name=app3 --watch -- --port=5000
+
+Modo 'cluster' (por código) con parámetros
+pm2 start dist/index.js --name=app4 --watch -- --port=5001 --mode=cluster
+
+Iniciar 4 instancias pm2 simultáneamente usando el archivo ecosystem.config.js:
+pm2 start ecosystem.config.js
+
+A los fines prácticos y para pruebas, una de estas instancias en ecosystem
+se inicia en modo 'cluster' y las otras en modo 'fork'
+
+Detener un proceso pm2: pm2 stop (id) - - Ejemplo: pm2 stop 3
+Matar todos los procesos pm2: pm2 delete all
