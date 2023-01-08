@@ -71,3 +71,33 @@ myWSServer.on('connection', (socket: any) => {
 });
 
 export default myHTTPServer;
+
+// import mensajesApi from '../../api/mensajes.js'
+// import { normalizarMensajes } from '../../normalizacion/index.js'
+
+// export default async function configurarSocket(socket, sockets) {
+//     socket.emit('mensajes', normalizarMensajes(await mensajesApi.listarAll()));
+
+//     socket.on('nuevoMensaje', async mensaje => {
+//         mensaje.fyh = new Date().toLocaleString()
+//         await mensajesApi.guardar(mensaje)
+//         sockets.emit('mensajes', normalizarMensajes(await mensajesApi.listarAll()));
+//     })
+// }
+
+// // normalizacion/mensajes.js
+
+// import { normalize, schema, } from 'normalizr'
+
+// // Definimos un esquema de autor
+// const schemaAuthor = new schema.Entity('author', {}, { idAttribute: 'email' });
+
+// // Definimos un esquema de mensaje
+// const schemaMensaje = new schema.Entity('post', { author: schemaAuthor }, { idAttribute: 'id' })
+
+// // Definimos un esquema de posts
+// const schemaMensajes = new schema.Entity('posts', { mensajes: [schemaMensaje] }, { idAttribute: 'id' })
+
+// const normalizarMensajes = (mensajesConId) => normalize({ id: 'mensajes', mensajes: mensajesConId }, schemaMensajes)
+
+// export { normalizarMensajes }

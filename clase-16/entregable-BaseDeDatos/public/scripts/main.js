@@ -122,7 +122,7 @@ productForm.addEventListener('submit', (event) => {
   });
 });
 
-// Recibo un evento de mensaje de chat desde el server
+// Recibo un evento de nuevo mensaje de chat desde el server
 socket.on('eventMessage', (message) => {
   // Muestro el mensaje usando el DOM, y dejo el foco en el input para poder seguir mandando mensajes
   ouputMessage(message);

@@ -1,7 +1,7 @@
 {
-  "name": "proyecto-final-segunda-entrega",
+  "name": "proyecto-ecommerce-con-passport",
   "version": "1.0.0",
-  "description": "Segunda entrega del Proyecto Final",
+  "description": "Uso de passport para la autenticación de usuario",
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",

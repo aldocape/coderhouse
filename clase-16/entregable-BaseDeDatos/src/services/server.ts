@@ -11,8 +11,8 @@ import morgan from 'morgan';
 // y se vuelven a crear con datos de prueba 'hardcodeados' que se cargan en la misma función
 // Para cambiar este comportamiento, comentar el import y la función de las 2 líneas de abajo una vez creadas las tablas
 // De esta manera, los datos que se carguen persisten en las bases de datos correspondientes
-import { createTables } from '../utils/createTables';
-createTables();
+// import { createTables } from '../utils/createTables';
+// createTables();
 
 // Importo librería socket.io
 const io = require('socket.io');
