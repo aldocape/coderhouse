@@ -4,7 +4,7 @@
   "description": "Se agregan funcionalidades de fork y cluster, y configuraciones de Nginx",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js -h=boquita -r=campeon --port=5000 --mode=cluster",
+    "start": "node dist/index.js --mode=cluster",
     "build": "tsc",
     "watch": "tsc -w",
     "dev": "nodemon",

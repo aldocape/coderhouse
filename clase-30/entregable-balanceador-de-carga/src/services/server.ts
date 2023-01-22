@@ -13,9 +13,7 @@ import { hideBin } from 'yargs/helpers';
 import os from 'os';
 
 // hideBin nos oculta el contenido del array _:[]
-const args: any = yargs(hideBin(process.argv))
-  .default('port', 8080)
-  .default('mode', 'fork').argv;
+const args: any = yargs(hideBin(process.argv)).default('mode', 'fork').argv;
 const argv: any = yargs(process.argv).argv;
 
 // Importo librería socket.io
@@ -36,10 +34,7 @@ app.set('view engine', 'ejs');
 app.use(loginRouter);
 app.use('/api', mainRouter);
 
-// Leo el puerto de escucha y el modo de ejecución del servidor
-// desde los argumentos pasados por línea de comandos
-// Se tienen que usar las 'keys' port y mode respectivamente
-export const PORT = args.port; // default: 8080
+export const PORT = process.env.PORT || 8080;
 export const MODE = args.mode; // default: 'fork'
 
 //Obtengo el numero de núcleos disponibles en mi PC

@@ -14,9 +14,7 @@ const yargs_1 = __importDefault(require("yargs"));
 const helpers_1 = require("yargs/helpers");
 const os_1 = __importDefault(require("os"));
 // hideBin nos oculta el contenido del array _:[]
-const args = (0, yargs_1.default)((0, helpers_1.hideBin)(process.argv))
-    .default('port', 8080)
-    .default('mode', 'fork').argv;
+const args = (0, yargs_1.default)((0, helpers_1.hideBin)(process.argv)).default('mode', 'fork').argv;
 const argv = (0, yargs_1.default)(process.argv).argv;
 // Importo librería socket.io
 const io = require('socket.io');
@@ -30,10 +28,7 @@ app.use(express_1.default.urlencoded({ extended: true })); //permite form data
 app.set('view engine', 'ejs');
 app.use(login_1.default);
 app.use('/api', index_1.default);
-// Leo el puerto de escucha y el modo de ejecución del servidor
-// desde los argumentos pasados por línea de comandos
-// Se tienen que usar las 'keys' port y mode respectivamente
-exports.PORT = args.port; // default: 8080
+exports.PORT = process.env.PORT || 8080;
 exports.MODE = args.mode; // default: 'fork'
 //Obtengo el numero de núcleos disponibles en mi PC
 exports.numCPUs = os_1.default.cpus().length;

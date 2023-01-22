@@ -115,5 +115,18 @@
 			"alias": "",
 			"avatar": "https://robohash.org/sitsequiquia.png"
 		}
+	},
+	{
+		"_id": "63c2fcd69520957d0a77a8cd",
+		"time": "14/01/2023 04:04:54",
+		"text": "Terminé el práctico!!",
+		"author": {
+			"email": "aldocape@gmail.com",
+			"nombre": "Aldo",
+			"apellido": "Cape",
+			"edad": 0,
+			"alias": "aldoc",
+			"avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/620.jpg"
+		}
 	}
 ]
