@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.messagesCollection = void 0;
 const mongoose_1 = require("mongoose");
-exports.messagesCollection = 'messages';
+exports.messagesCollection = 'message';
 const MessageSchema = new mongoose_1.Schema({
     time: { type: String, require: true, max: 100 },
     text: { type: String, require: true, max: 600 },

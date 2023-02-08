@@ -7,7 +7,7 @@ const cluster = require('cluster');
 const server_1 = require("./services/server");
 const logger_1 = __importDefault(require("./middlewares/logger"));
 // // La conexión a la base de datos de MongoDB Atlas la ejecuto directamente en el script database
-require("./services/database");
+// import './services/database';
 /* --------------------------------------------------------------------------- */
 /* MASTER */
 if (server_1.MODE === 'cluster' && cluster.isPrimary) {

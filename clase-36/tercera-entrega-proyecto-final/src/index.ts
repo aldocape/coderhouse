@@ -3,7 +3,7 @@ import { PORT, MODE, myHTTPServer, numCPUs } from './services/server';
 import logger from './middlewares/logger';
 
 // // La conexión a la base de datos de MongoDB Atlas la ejecuto directamente en el script database
-import './services/database';
+// import './services/database';
 
 /* --------------------------------------------------------------------------- */
 /* MASTER */

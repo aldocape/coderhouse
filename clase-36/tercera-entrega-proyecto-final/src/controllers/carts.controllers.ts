@@ -1,25 +1,30 @@
+import {
+  saveCart,
+  getCartById,
+  deleteCartById,
+  updateCart,
+} from '../services/carts.services';
+
+import { getProductById } from '../services/products.services';
+
 import { Router, Request, Response } from 'express';
+import { Carrito } from '../interfaces';
+
 import config from '../config';
 
-// Importo interfaz de carrito y controladores de carrito y productos
-import { Carrito } from '../interfaces';
-import cartInstance from '../controller/carts';
-import prodInstance from '../controller/products';
-
 import { EmailService } from '../services/email';
-import { sendMSG } from '../controller/twilio';
+import { sendMSG } from './twilio.controller';
 
 const router = Router();
 
+// Importo función para saber si se ingresa un ObjectId válido
 import { ObjectId, isValidObjectId } from '../utils/tools';
 
-// Función que crea un carrito, y para el caso que reciba también por 'body' un listado de productos con sus cantidades, los agrega a ese carrito
-// Endpoint: /api/carrito Método: POST
-
-router.post('/', async (req: any, res: Response) => {
+export const saveCartController = async (req: any, res: Response) => {
   const productsCart = req.body;
 
   try {
+    // Al array de products no le pongo tipo Producto porque sólo tiene los ObjectID
     let products: [any?] = [];
 
     let html = '<p>';
@@ -44,7 +49,8 @@ router.post('/', async (req: any, res: Response) => {
       productos: products,
     };
 
-    const newCart = await cartInstance.add(cart);
+    // Guardo carrito en la BD
+    const newCart = await saveCart(cart);
 
     if (newCart) {
       // Usuario creó un nuevo carrito, envío mail al administrador
@@ -58,14 +64,15 @@ router.post('/', async (req: any, res: Response) => {
         'https://cadenaser.com/resizer/c09Az9WzwQFwSZPN90pP1dhNqQ8=/736x552/filters:format(jpg):quality(70)/cloudfront-eu-central-1.images.arcpublishing.com/prisaradio/TOLWBLP2DRFWZPVWKRWIQ4WH3I.jpg'
       );
 
-      const sms = sendMSG(
-        'Su pedido ha sido recibido y en este momento se encuentra en proceso.\nGracias por su confianza en nosotros.',
-        req.user.telefono
-      );
+      // Esta parte está comentada porque funciona únicamente si está validado el número de teléfono en twilio
+      // const sms = sendMSG(
+      //   'Su pedido ha sido recibido y en este momento se encuentra en proceso.\nGracias por su confianza en nosotros.',
+      //   req.user.telefono
+      // );
 
       // Armo el mail cuyo cuerpo es la variable html con los datos del carrito
-
       EmailService.sendEmail(destination, subject, html).then((response) => {
+        // Una vez enviado el mail, respondo que el carrito fue creado con status 201
         res.status(201).json({
           msg: 'Carrito creado con éxito',
           newCart,
@@ -82,17 +89,15 @@ router.post('/', async (req: any, res: Response) => {
       error: err.message,
     });
   }
-});
+};
 
-// Endpoint para listar todos los productos guardados en el carrito, recibe id de carrito
-// Endpoint: /api/carrito/:id/productos Método: GET
-router.get('/:id/productos', async (req, res) => {
+export const getCartController = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   try {
     // Verifico que el objectId sea correcto
     if (isValidObjectId(id)) {
-      const cart = await cartInstance.getById(id);
+      const cart = await getCartById(id);
 
       if (cart) {
         res.json({
@@ -116,13 +121,11 @@ router.get('/:id/productos', async (req, res) => {
       error: err.message,
     });
   }
-});
+};
 
-// Elimina un carrito recibiendo como parámetro su id
-// Endpoint: /api/carrito/:id Método: DELETE
-router.delete('/:id', async (req, res) => {
+export const deleteCartController = async (req: Request, res: Response) => {
   try {
-    const result = await cartInstance.delete(req.params.id);
+    const result = await deleteCartById(req.params.id);
 
     if (result)
       res.json({
@@ -134,33 +137,27 @@ router.delete('/:id', async (req, res) => {
       error: err.message,
     });
   }
-});
+};
 
-// Permite incorporar productos al carrito por id de producto
-// Endpoint: /api/carrito/:id/productos Método: POST
-
-router.post('/:id/productos', async (req: Request, res: Response) => {
+export const addProdCartController = async (req: Request, res: Response) => {
   const { prodId } = req.body;
 
   try {
     // Busco el producto en la DB
-    const product = await prodInstance.getById(prodId);
-
+    const product = await getProductById(prodId);
     if (!product) {
       res.status(400).json({
         msg: `No existe el producto con id: ${prodId}`,
       });
     } else {
       // Busco el carrito en la DB
-      const productsCart = await cartInstance.getById(req.params.id);
-
+      const productsCart = await getCartById(req.params.id);
       if (!productsCart) {
         res.status(400).json({
           msg: `No existe el carrito con id: ${req.params.id}`,
         });
       } else {
         const idProd = new ObjectId(prodId);
-
         // Si existe el carrito y el producto, agrego el producto al array de productos del carrito
         // Verifico también que existe la propiedad 'productos' en el objeto que recibo
         if (productsCart.productos) {
@@ -168,13 +165,11 @@ router.post('/:id/productos', async (req: Request, res: Response) => {
           // porque si lo hago directamente con la propiedad 'productos', TypeScript marca un error
           const array: [any?] = productsCart.productos;
           array.push(idProd);
-
           const carrito = {
             productos: array,
           };
-
           // Actualizo con el nuevo carrito en la base de datos
-          const updatedCart = await cartInstance.update(req.params.id, carrito);
+          const updatedCart = await updateCart(req.params.id, carrito);
           res.json(updatedCart);
         } else {
           res.status(400).json({
@@ -188,14 +183,15 @@ router.post('/:id/productos', async (req: Request, res: Response) => {
       error: err.message,
     });
   }
-});
+};
 
-// Elimina un producto del carrito recibiendo como parámetros id de carrito e id del producto
-// Endpoint: /api/carrito/:id/productos/:id_prod Método: DELETE
-router.delete('/:id/productos/:id_prod', async (req, res) => {
+export const deleteProductCartController = async (
+  req: Request,
+  res: Response
+) => {
   try {
     //Obtengo el carrito desde la DB
-    const productsCart = await cartInstance.getById(req.params.id);
+    const productsCart = await getCartById(req.params.id);
 
     // Si el carrito no existe en la DB, mando un error
     if (!productsCart) {
@@ -226,7 +222,7 @@ router.delete('/:id/productos/:id_prod', async (req, res) => {
         };
 
         // Actualizo el carrito en la BD
-        const updatedCart = await cartInstance.update(req.params.id, carrito);
+        const updatedCart = await updateCart(req.params.id, carrito);
 
         // Si salió todo bien muestro carrito actualizado, sino muestro un error
         if (updatedCart) {
@@ -243,6 +239,4 @@ router.delete('/:id/productos/:id_prod', async (req, res) => {
       error: err.message,
     });
   }
-});
-
-export default router;
+};

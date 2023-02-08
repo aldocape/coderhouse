@@ -1,13 +1,13 @@
 {
   "name": "proyecto-ecommerce-tercera-entrega",
   "version": "1.0.0",
-  "description": "Se agregan funcionalidades de envío de mails y whatsapp",
+  "description": "Proyecto e-commerce dividido en capas (ruteo, controlador, lógica de negocio y persistencia)",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "dev": "nodemon",
-    "start": "node dist/index.js --mode=cluster",
+    "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

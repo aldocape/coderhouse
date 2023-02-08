@@ -1,0 +1,48 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateProduct = exports.deleteProductById = exports.getProductById = exports.getAllProducts = exports.saveProduct = void 0;
+const persistence_1 = require("../persistence/persistence");
+function saveProduct(product) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const prod = yield (0, persistence_1.save)('product', product);
+        return prod;
+    });
+}
+exports.saveProduct = saveProduct;
+function getAllProducts() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const products = yield (0, persistence_1.getAll)('product');
+        return products;
+    });
+}
+exports.getAllProducts = getAllProducts;
+function getProductById(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const product = yield (0, persistence_1.getById)('product', id);
+        return product;
+    });
+}
+exports.getProductById = getProductById;
+function deleteProductById(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const product = yield (0, persistence_1.deleteById)('product', id);
+        return product;
+    });
+}
+exports.deleteProductById = deleteProductById;
+function updateProduct(id, product) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const productModified = yield (0, persistence_1.update)('product', id, product);
+        return productModified;
+    });
+}
+exports.updateProduct = updateProduct;

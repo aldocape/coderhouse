@@ -73,8 +73,7 @@ productForm.addEventListener('submit', (event) => {
   });
 });
 
-let hayProductos = true;
-
+// Función para mostrar campo de texto de cantidad cuando se tilda un checkbox
 function verificarCheck(id) {
   const checkBox = document.getElementById(id);
   const field = document.getElementById(`input_${id}`);
@@ -95,6 +94,13 @@ requestHandler(
           'Su carrito de compras tiene los siguientes elementos:<br /><br />';
         let nombre = '';
         let cantidad = 0;
+        // Este loop es para convertir los datos que traigo de la BD, recorro un array de ids de producto
+        // y los agrupo en un string, quedando de esta manera:
+        /**
+         *  array: [Objectid1, Objectid1, Objectid2, etc..]
+         *  Resultado: Nombre: Producto1 - Cantidad: 2<br />Nombre: Producto2 - Cantidad: 1, etc...
+         */
+
         for (let i = 0; i < carrito.productos.length; i++) {
           const producto = carrito.productos[i].nombre;
           if (nombre !== producto) {
@@ -125,6 +131,9 @@ requestHandler(
     datos_carrito.style.display = 'block';
   });
 
+// Inicializo variable hayProductos para uso del dom cuando agrego uno nuevo, en función 'outputProduct'
+let hayProductos = true;
+
 // Función fetch para traer los mensajes almacenados en la DB cuando se carga el sitio
 requestHandler('/api/productos', 'GET').then((products) => {
   if (products && products.length) {
@@ -145,10 +154,10 @@ requestHandler('/api/productos', 'GET').then((products) => {
 productListForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  // Obtengo datos de los checkbox que estén en "checked"
-
+  // Obtengo todos los checkbox del DOM
   const checkBoxs = document.getElementsByClassName('carritoCheck');
 
+  // Filtro los checkbox que estén en estado "checked" para guardar el nombre y cantidad de ese producto
   const productsCart = [];
   for (let check of checkBoxs) {
     if (check.checked) {
@@ -160,7 +169,7 @@ productListForm.addEventListener('submit', (event) => {
     }
   }
 
-  // // Hago un 'POST' a la API usando el endpoint de carrito y le paso el objeto nuevo
+  // // Hago un 'POST' a la API usando el endpoint de carrito y le paso el carrito nuevo
   requestHandler('/api/carrito', 'POST', productsCart).then(async (data) => {
     // Obtengo del DOM una capa invisible del formulario, que uso para mostrar mensajes de error si los hubiera
     const divCart = document.getElementById('msgCart');
@@ -186,12 +195,7 @@ productListForm.addEventListener('submit', (event) => {
   });
 });
 
-//-------------------------------------------------------------------------------------
-
-// MENSAJES
-
-/* --------------------- NORMALIZACIÓN DE MENSAJES ---------------------------- */
-
+// Normalización de mensajes
 const author = new normalizr.schema.Entity(
   'author',
   {},
@@ -209,8 +213,6 @@ const message = new normalizr.schema.Entity(
 );
 
 const finalSchema = [message];
-
-// /* ----------------------------------------------------------------------------- */
 
 // Función fetch para traer los mensajes almacenados en la DB cuando se carga el sitio
 requestHandler('/api/mensajes/normalized', 'GET').then((messages) => {
@@ -269,14 +271,6 @@ requestHandler('/api/mensajes/normalized', 'GET').then((messages) => {
 
       outputMessage(messageList);
     }
-
-    // messages.messages.forEach((message) => {
-    //   outputMessage(message);
-    // });
-
-    // chatMessages.innerHTML += `<h2 style = "margin: 40px 0">Objeto mensajes sin normalizar: <h2>`;
-    // chatMessages.innerHTML += `<h3 style = "margin: 20px 0">Tamaño del archivo: ${messages.tamanio} <h3>`;
-    // chatMessages.innerHTML += `<p>${JSON.stringify(messages.messages)}</p>`;
   }
 });
 
@@ -410,28 +404,3 @@ btnLogout.addEventListener('click', (event) => {
 
   document.location.href = '/logout';
 });
-
-// const inputUsername = document.getElementById('username') // inputEmail
-// const inputMensaje = document.getElementById('inputMensaje') // inputMessage
-// const btnEnviar = document.getElementById('btnEnviar')
-
-// const formPublicarMensaje = document.getElementById('formPublicarMensaje')
-// chatForm.addEventListener('submit', e => {
-//     e.preventDefault()
-
-//     const mensaje = {
-//         author: {
-//             email: inputUsername.value,
-//             nombre: document.getElementById('firstname').value,
-//             apellido: document.getElementById('lastname').value,
-//             edad: document.getElementById('age').value,
-//             alias: document.getElementById('alias').value,
-//             avatar: document.getElementById('avatar').value
-//         },
-//         text: inputMensaje.value
-//     }
-
-//     socket.emit('nuevoMensaje', mensaje);
-//     formPublicarMensaje.reset()
-//     inputMensaje.focus()
-// })

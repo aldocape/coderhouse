@@ -16,4 +16,5 @@ exports.default = {
     CEL: process.env.CEL || 'CEL',
     ADMIN_CEL: process.env.ADMIN_CEL || 'ADMIN_CEL',
     TWILIO_CELLPHONE: process.env.TWILIO_CELLPHONE || 'TWILIO_CELLPHONE',
+    PERSISTENCE: process.env.PERSISTENCE || 'mongo',
 };

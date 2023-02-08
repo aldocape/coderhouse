@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose';
 
-export const messagesCollection = 'messages';
+export const messagesCollection = 'message';
 
 const MessageSchema: Schema = new Schema(
   {

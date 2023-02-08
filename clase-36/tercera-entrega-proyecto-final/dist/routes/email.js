@@ -16,7 +16,7 @@ router.post('/send-email', (req, res) => __awaiter(void 0, void 0, void 0, funct
     const { body } = req;
     if (!body || !body.dest || !body.subject || !body.content)
         return res.status(400).json({
-            msg: "Mandame en el body los siguientes datos: 'dest', 'subject' y 'content'",
+            msg: "Falta enviar en el body los siguientes datos: 'dest', 'subject' y 'content'",
             body,
         });
     const destination = body.dest;
