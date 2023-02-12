@@ -32,3 +32,34 @@
 [33mwarn[39m [07-02-2023 19:37:56] | Ruta inexistente
 [33mwarn[39m [07-02-2023 19:39:16] | Ruta inexistente
 [33mwarn[39m [08-02-2023 11:17:52] | Ruta inexistente
+[33mwarn[39m [11-02-2023 10:50:58] | Ruta inexistente
+[31merror[39m [11-02-2023 18:19:59] | ERROR => RangeError: Maximum call stack size exceeded
+[31merror[39m [11-02-2023 18:19:59] | ERROR => RangeError: Maximum call stack size exceeded
+[31merror[39m [11-02-2023 18:19:59] | ERROR => RangeError: Maximum call stack size exceeded
+[31merror[39m [11-02-2023 18:19:59] | ERROR => RangeError: Maximum call stack size exceeded
+[31merror[39m [11-02-2023 18:19:59] | ERROR => RangeError: Maximum call stack size exceeded
+[33mwarn[39m [11-02-2023 18:55:29] | Ruta inexistente
+[33mwarn[39m [11-02-2023 19:06:31] | Ruta inexistente
+[33mwarn[39m [11-02-2023 19:06:56] | Ruta inexistente
+[33mwarn[39m [12-02-2023 14:30:38] | Ruta inexistente
+[33mwarn[39m [12-02-2023 14:30:44] | Ruta inexistente
+[33mwarn[39m [12-02-2023 14:32:15] | Ruta inexistente
+[33mwarn[39m [12-02-2023 15:19:18] | Ruta inexistente
+[33mwarn[39m [12-02-2023 15:20:24] | Ruta inexistente
+[33mwarn[39m [12-02-2023 15:30:34] | Ruta inexistente
+[33mwarn[39m [12-02-2023 15:33:35] | Ruta inexistente
+[33mwarn[39m [12-02-2023 15:35:47] | Ruta inexistente
+[31merror[39m [12-02-2023 18:45:46] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/src/users.json'
+[31merror[39m [12-02-2023 18:52:13] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/src/users.json'
+[31merror[39m [12-02-2023 18:52:19] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/src/users.json'
+[31merror[39m [12-02-2023 18:56:01] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/src/users.json'
+[31merror[39m [12-02-2023 18:57:02] | user.matchPassword is not a function
+[31merror[39m [12-02-2023 19:18:52] | user.matchPassword is not a function
+[31merror[39m [12-02-2023 19:26:14] | user.matchPassword is not a function
+[33mwarn[39m [12-02-2023 19:52:40] | Ruta inexistente
+[31merror[39m [12-02-2023 19:52:52] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/carts.json'
+[31merror[39m [12-02-2023 19:52:52] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/products.json'
+[31merror[39m [12-02-2023 19:52:53] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/messages.json'
+[31merror[39m [12-02-2023 19:55:38] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/carts.json'
+[31merror[39m [12-02-2023 19:55:39] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/messages.json'
+[31merror[39m [12-02-2023 19:55:39] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/products.json'

@@ -208,7 +208,7 @@ const message = new normalizr.schema.Entity(
   'message',
   { author: author },
   {
-    idAttribute: '_id',
+    idAttribute: 'id',
   }
 );
 
@@ -352,7 +352,7 @@ function outputProduct(product) {
   divTabla.innerHTML += `
   <div class="col-sm-4">
     <div class="card mt-4 prod-item">
-    <input type="hidden" id="input_nombre_${product._id}" value="${product.nombre}" />
+    <input type="hidden" id="input_nombre_${product.id}" value="${product.nombre}" />
       <img
         class="card-img-top"
         src="${product.foto}"
@@ -364,12 +364,13 @@ function outputProduct(product) {
         <p class="card-text">
           ${product.descripcion}
         </p>
-        <p class="card-text">Precio: $${product.precio}</p>
+        <p class="card-text">Precio ARS: $${product.precioARS}</p>
+        <p class="card-text">Precio USD: $${product.precioUSD}</p>
         
-        <p class="card-text"><input type="checkbox" id="${product._id}" class="carritoCheck" onclick="verificarCheck('${product._id}')" />&nbsp;&nbsp;Agregar al carrito</p>
-        <p class="card-text" id="input_${product._id}" style="display:none">
-        Hola soy el producto ${product._id}<br />
-        Cantidad:&nbsp;&nbsp;<input type="number" id="input_cant_${product._id}" />
+        <p class="card-text"><input type="checkbox" id="${product.id}" class="carritoCheck" onclick="verificarCheck('${product.id}')" />&nbsp;&nbsp;Agregar al carrito</p>
+        <p class="card-text" id="input_${product.id}" style="display:none">
+        Hola soy el producto ${product.id}<br />
+        Cantidad:&nbsp;&nbsp;<input type="number" id="input_cant_${product.id}" />
         
         </p>
       </div>

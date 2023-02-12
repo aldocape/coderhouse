@@ -6,7 +6,6 @@ import {
   updateProduct,
 } from '../services/products.services';
 import { Request, Response } from 'express';
-import { Producto } from '../interfaces';
 
 // Importo función para saber si se ingresa un ObjectId válido
 import { isValidObjectId } from '../utils/tools';
@@ -16,7 +15,7 @@ export const saveController = async (req: any, res: Response) => {
     const { nombre, descripcion, codigo, foto, precio, stock } =
       req.productData;
 
-    const newProduct: Producto = {
+    const newProduct: any = {
       nombre,
       descripcion,
       codigo,

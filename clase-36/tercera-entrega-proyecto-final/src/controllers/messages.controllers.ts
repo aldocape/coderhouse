@@ -53,7 +53,7 @@ export const getNormalizedController = async (req: Request, res: Response) => {
 export const saveMsgController = async (req: any, res: Response) => {
   try {
     const { author, text } = req.msgData;
-    const msg: Mensaje = formatMessage(author, text);
+    const msg: any = formatMessage(author, text);
 
     const newMsg = await saveMessage(msg);
 

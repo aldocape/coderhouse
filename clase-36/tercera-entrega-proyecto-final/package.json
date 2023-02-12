@@ -22,6 +22,7 @@
     "@types/nodemailer": "^6.4.7",
     "@types/passport": "^1.0.11",
     "@types/passport-local": "^1.0.34",
+    "@types/uuid": "^9.0.0",
     "@types/yargs": "^17.0.17",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
@@ -46,6 +47,7 @@
     "passport-local": "^1.0.0",
     "socket.io": "^4.5.4",
     "twilio": "^3.84.1",
+    "uuid": "^9.0.0",
     "winston": "^3.8.2",
     "yargs": "^17.6.2"
   }

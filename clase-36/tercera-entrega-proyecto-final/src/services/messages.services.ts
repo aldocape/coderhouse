@@ -1,4 +1,4 @@
-import { save, getAll } from '../persistence/persistence';
+import { save, getAll } from '../daos/daos';
 import { Mensaje } from '../interfaces';
 
 // Importo métodos de librería normalizr para normalizar lo que llega de la BD
@@ -16,7 +16,7 @@ const message = new schema.Entity(
   'message',
   { author: author },
   {
-    idAttribute: '_id',
+    idAttribute: 'id',
   }
 );
 

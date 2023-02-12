@@ -1,6 +1,9 @@
 // Definición de estructuras de datos
 
-interface Producto {
+import { ObjectId } from 'mongoose';
+
+export interface Producto {
+  _id: string;
   nombre: string;
   descripcion?: string;
   codigo: string;
@@ -10,11 +13,12 @@ interface Producto {
 }
 
 // Carrito es un array de ObjectId de productos
-interface Carrito {
+export interface Carrito {
   productos: [any?];
 }
 
-interface Mensaje {
+export interface Mensaje {
+  _id: string;
   time: string;
   text: string;
   author: {
@@ -27,7 +31,8 @@ interface Mensaje {
   };
 }
 
-interface Usuario {
+export interface Usuario {
+  _id: string;
   username: string;
   password: string;
   admin: boolean;
@@ -38,5 +43,3 @@ interface Usuario {
   avatar: string;
   carrito?: any;
 }
-
-export { Producto, Carrito, Mensaje, Usuario };

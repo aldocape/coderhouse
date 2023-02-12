@@ -2,6 +2,19 @@ import { model, Schema } from 'mongoose';
 
 export const messagesCollection = 'message';
 
+interface IMessage extends Document {
+  time: string;
+  text: string;
+  author: {
+    email: string;
+    nombre: string;
+    apellido: string;
+    edad: number;
+    alias: string;
+    avatar?: string;
+  };
+}
+
 const MessageSchema: Schema = new Schema(
   {
     time: { type: String, require: true, max: 100 },
@@ -18,4 +31,4 @@ const MessageSchema: Schema = new Schema(
   { timestamps: false, versionKey: false }
 );
 
-export default model(messagesCollection, MessageSchema);
+export default model<IMessage>(messagesCollection, MessageSchema);

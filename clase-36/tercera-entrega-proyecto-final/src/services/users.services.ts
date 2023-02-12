@@ -5,11 +5,12 @@ import {
   update,
   findOne,
   getAll,
-} from '../persistence/persistence';
+  matchPassword,
+} from '../daos/daos';
 
 import { Usuario } from '../interfaces';
 
-export async function saveUser(user: Usuario) {
+export async function saveUser(user: any) {
   const newUser = await save('user', user);
   return newUser;
 }
@@ -37,4 +38,8 @@ export async function findOneUser(field: any) {
 export async function getAllUsers() {
   const users = await getAll('user');
   return users;
+}
+
+export async function matchPswd(password1: string, password2: string) {
+  return await matchPassword('user', password1, password2);
 }

@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { model, ObjectId, Schema } from 'mongoose';
 import { cartsCollection } from './carts';
 
 import bcrypt from 'bcryptjs';
@@ -6,6 +6,20 @@ import bcrypt from 'bcryptjs';
 const usersCollection = 'user';
 
 const collection: string = cartsCollection;
+
+interface IUser extends Document {
+  username: string;
+  password: string;
+  admin: boolean;
+  nombre: string;
+  direccion: string;
+  edad: number;
+  telefono: string;
+  avatar: string;
+  carrito: ObjectId;
+  encryptPassword(password: string): Promise<string>;
+  matchPassword(password: string): Promise<boolean>;
+}
 
 const userSchema: Schema = new Schema(
   {
@@ -31,4 +45,4 @@ userSchema.method('matchPassword', async function (password) {
   return await bcrypt.compare(password, this.password);
 });
 
-export default model(usersCollection, userSchema);
+export default model<IUser>(usersCollection, userSchema);

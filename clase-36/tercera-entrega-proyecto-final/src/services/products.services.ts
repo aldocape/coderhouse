@@ -1,10 +1,4 @@
-import {
-  save,
-  getAll,
-  getById,
-  deleteById,
-  update,
-} from '../persistence/persistence';
+import { save, getAll, getById, deleteById, update } from '../daos/daos';
 import { Producto } from '../interfaces';
 
 export async function saveProduct(product: Producto) {
