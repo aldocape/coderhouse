@@ -241,12 +241,14 @@ requestHandler('/api/mensajes/normalized', 'GET').then((messages) => {
       (tamanioMensajes * 100) / tamanioMensajesDesnormalizados
     );
 
-    const tituloCentroMensajes = document.getElementById(
-      'titulo_centro_mensajes'
-    );
-    tituloCentroMensajes.innerText += ` (Porcentaje de compresión ${
-      100 - porcentajeCompresion
-    }%)`;
+    if (porcentajeCompresion < 100) {
+      const tituloCentroMensajes = document.getElementById(
+        'titulo_centro_mensajes'
+      );
+      tituloCentroMensajes.innerText += ` (Porcentaje de compresión ${
+        100 - porcentajeCompresion
+      }%)`;
+    }
 
     // Creo un objeto 'plantilla' al que le voy guardando los datos dentro del 'for'
     const messageList = {

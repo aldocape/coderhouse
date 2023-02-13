@@ -83,9 +83,13 @@ export default class DaoMongoDB {
       if (documents)
         switch (this.collection) {
           case 'product':
-            return documents.map((producto: any) => new ProductsDTO(producto));
+            return documents.map(
+              (producto: any) => new ProductsDTO(producto, true)
+            );
           case 'message':
-            return documents.map((message: any) => new MessagesDTO(message));
+            return documents.map(
+              (message: any) => new MessagesDTO(message, true)
+            );
           default:
             break;
         }
@@ -128,10 +132,10 @@ export default class DaoMongoDB {
           if (doc)
             switch (this.collection) {
               case 'product':
-                return new ProductsDTO(doc);
+                return new ProductsDTO(doc, true);
 
               case 'message':
-                return new MessagesDTO(doc);
+                return new MessagesDTO(doc, true);
               default:
                 break;
             }

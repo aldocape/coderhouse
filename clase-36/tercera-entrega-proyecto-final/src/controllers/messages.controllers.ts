@@ -6,8 +6,6 @@ import {
 
 import { Request, Response } from 'express';
 
-// Importo estructura de datos para mensajes
-import { Mensaje } from '../interfaces';
 // Importo función para agregar fecha y hora a los mensajes
 import { formatMessage } from '../utils/tools';
 

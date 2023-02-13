@@ -10,7 +10,7 @@ export default class ProductsDTO {
   hasStock: boolean;
   stock: number;
 
-  constructor(data: Producto) {
+  constructor(data: any, esMongo: boolean) {
     this.nombre = data.nombre;
     this.descripcion = data.descripcion;
     this.foto = data.foto;
@@ -18,6 +18,7 @@ export default class ProductsDTO {
     this.precioUSD = (data.precio / 377).toFixed(2);
     this.hasStock = data.stock > 0;
     this.stock = data.stock;
-    this.id = data._id || '';
+    if (esMongo) this.id = data._id || '';
+    else this.id = data.id;
   }
 }

@@ -29,12 +29,14 @@ export const saveCartController = async (req: any, res: Response) => {
 
     let html = '<p>';
     let msgWSP = `Nuevo pedido de ${req.user.nombre}, E-mail: ${req.user.username}\n\n`;
+
     // Verifico si tengo un prodId que viene por body, creo un array con ese elemento, sino el array queda vacío
     if (productsCart) {
       for (let i = 0; i < productsCart.length; i++) {
         const prod = productsCart[i];
         for (let j = 0; j < prod.cantidad; j++) {
-          const item = new ObjectId(prod.id);
+          // const item = new ObjectId(prod.id);
+          const item = prod.id;
           products.push(item);
         }
         // Luego de guardar el id del producto en el array para la BD,

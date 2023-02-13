@@ -3,7 +3,6 @@ import path from 'path';
 import MessagesDTO from '../../dto/messages.dto';
 import ProductsDTO from '../../dto/products.dto';
 import logger from '../../middlewares/logger';
-import bcrypt from 'bcryptjs';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -26,22 +25,10 @@ export default class DaoFileSystem {
       case 'message':
         this.file = '../../../messages.json';
         break;
-      case 'user':
-        this.file = '../../../users.json';
-        break;
 
       default:
         break;
     }
-  }
-
-  async encryptPassword(password: string) {
-    const salt = await bcrypt.genSalt(10);
-    return await bcrypt.hash(password, salt);
-  }
-
-  async matchPassword(password1: string, password2: string): Promise<boolean> {
-    return await bcrypt.compare(password1, password2);
   }
 
   public static getInstance(collection: string): DaoFileSystem {
@@ -62,9 +49,11 @@ export default class DaoFileSystem {
       if (items)
         switch (this.collection) {
           case 'product':
-            return items.map((producto: any) => new ProductsDTO(producto));
+            return items.map(
+              (producto: any) => new ProductsDTO(producto, false)
+            );
           case 'message':
-            return items.map((message: any) => new MessagesDTO(message));
+            return items.map((message: any) => new MessagesDTO(message, false));
           default:
             break;
         }
@@ -86,10 +75,10 @@ export default class DaoFileSystem {
       if (item)
         switch (this.collection) {
           case 'product':
-            return new ProductsDTO(item);
+            return new ProductsDTO(item, false);
 
           case 'message':
-            return new MessagesDTO(item);
+            return new MessagesDTO(item, false);
           default:
             break;
         }
@@ -107,10 +96,6 @@ export default class DaoFileSystem {
       // Si salió todo bien, es decir, no se va al catch, entonces almaceno los datos como objeto
       const itemsList = JSON.parse(content);
       document.id = uuidv4();
-
-      // Si estoy cargando un nuevo usuario, debo encriptar la contraseña
-      // if (this.collection === 'user')
-      //   document.password = this.encryptPassword(document.password);
 
       // Agrego al array el nuevo item
       itemsList.push(document);

@@ -3,8 +3,12 @@ import config from '../config';
 import { DaoFactory } from './factory';
 
 let argv = config.PERSISTENCE;
+let DAO: any;
 
-const DAO = DaoFactory.create(argv);
+console.log(argv);
+
+if (argv === 'mongo') DAO = DaoFactory.create(argv, true);
+else DAO = DaoFactory.create(argv, false);
 
 let productsHandler: any;
 let cartsHandler: any;
@@ -15,17 +19,19 @@ if (DAO) {
   productsHandler = DAO.productHandler();
   cartsHandler = DAO.cartsHandler();
   messagesHandler = DAO.messagesHandler();
-
-  if (argv === 'mongo') usersHandler = DAO.usersHandler();
 }
 
-// Creo una instancia de DAO para usuarios con mongo exclusivamente,
-// porque sino no puedo implementar passport-local debido a que usa la librería connect-mongo
-
+// Creo una instancia de DAO para usuarios para manejar con mongo exclusivamente,
+// porque sino no puedo implementar passport-local debido a que usuarios necesita la librería connect-mongo
 if (argv !== 'mongo') {
-  const DAOUsers = DaoFactory.create('mongo');
-  if (DAOUsers) usersHandler = DAOUsers.usersHandler();
+  DAO = DaoFactory.create('mongo', false);
 }
+
+// constantes que utilizo para probar que no se vuelvan a crear nuevas instancias del DAO
+const DAO2 = DaoFactory.create(argv, false);
+const DAO3 = DaoFactory.create(argv, false);
+
+usersHandler = DAO.usersHandler();
 
 // En cada operación con la BD, trabajo individualmente con cada uno de los objetos instanciados
 export async function save(collection: string, obj: any) {

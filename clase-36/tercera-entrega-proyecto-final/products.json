@@ -1,11 +1,29 @@
 [
   {
-    "nombre": "un producto",
-    "descripcion": "muy bonito",
-    "codigo": "748954379",
-    "foto": "",
-    "precio": 1234,
-    "stock": 0,
-    "id": "72257c50-5b63-4f90-8174-91047254fbf6"
+    "nombre": "Protector Solar para niños",
+    "descripcion": "",
+    "codigo": "45648498",
+    "foto": "https://http2.mlstatic.com/D_NQ_NP_708632-MLA52162580244_102022-O.webp",
+    "precio": 1574,
+    "stock": "50",
+    "id": "cc31e62d-d874-4278-94c1-aefc46989a0a"
+  },
+  {
+    "nombre": "Caramelos",
+    "descripcion": "Flynn paff",
+    "codigo": "489456498",
+    "foto": "https://http2.mlstatic.com/D_NQ_NP_633204-MLA49255672142_032022-O.webp",
+    "precio": 50,
+    "stock": "500",
+    "id": "4cf59538-8199-444a-9e79-b4542e10e7d2"
+  },
+  {
+    "nombre": "CIF Multiuso",
+    "descripcion": "Máxima limpieza",
+    "codigo": "830932",
+    "foto": "https://http2.mlstatic.com/D_NQ_NP_796566-MLA49588409097_042022-O.webp",
+    "precio": 345,
+    "stock": "40",
+    "id": "64cf6913-3e64-4fab-8987-8f2fe2b06a1c"
   }
 ]

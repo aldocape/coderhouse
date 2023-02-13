@@ -9,8 +9,9 @@ export default class MessagesDTO {
     avatar: string;
   };
 
-  constructor(data: Mensaje) {
-    this.id = data._id;
+  constructor(data: any, esMongo: boolean) {
+    if (esMongo) this.id = data._id;
+    else this.id = data.id;
     this.time = data.time;
     this.text = data.text;
     this.author = {
