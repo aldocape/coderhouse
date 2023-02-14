@@ -103,6 +103,7 @@ const login = (req, username, password, done) => __awaiter(void 0, void 0, void 
         else {
             // Si el usuario existe, comparo la password que llega con la de la BD, con el método matchPassword
             const match = yield user.matchPassword(password);
+            // const match = await matchPswd(password, user.password);
             // Si la contraseña es igual a la que está registrada en la clase (desencriptada), devuelve true
             // En ese caso, al método 'done' le pasamos user, sino false por 'no encontrado'
             if (match) {

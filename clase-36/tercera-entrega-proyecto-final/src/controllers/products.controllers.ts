@@ -7,9 +7,6 @@ import {
 } from '../services/products.services';
 import { Request, Response } from 'express';
 
-// Importo función para saber si se ingresa un ObjectId válido
-import { isValidObjectId } from '../utils/tools';
-
 export const saveController = async (req: any, res: Response) => {
   try {
     const { nombre, descripcion, codigo, foto, precio, stock } =
@@ -31,7 +28,7 @@ export const saveController = async (req: any, res: Response) => {
       newProd,
     });
   } catch (err: any) {
-    res.status(500).json({
+    res.status(400).json({
       error: err.message,
     });
   }
@@ -49,7 +46,7 @@ export const getAllController = async (req: Request, res: Response) => {
       });
     }
   } catch (err: any) {
-    res.status(500).json({
+    res.status(400).json({
       error: err.message,
     });
   }
@@ -58,22 +55,17 @@ export const getAllController = async (req: Request, res: Response) => {
 export const getProdByIdController = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    if (isValidObjectId(id)) {
-      const product = await getProductById(id);
 
-      if (!product)
-        res.status(404).json({
-          msg: 'El producto no ha sido encontrado',
-        });
+    const product = await getProductById(id);
 
-      res.json(product);
-    } else {
-      res.status(500).json({
-        msg: 'El id proporcionado no es un ObjectId válido para MongoDB',
+    if (!product)
+      res.status(404).json({
+        msg: 'El producto no ha sido encontrado',
       });
-    }
+
+    res.json(product);
   } catch (err: any) {
-    res.status(500).json({
+    res.status(400).json({
       error: err.message,
     });
   }
@@ -83,24 +75,18 @@ export const deleteProdByIdController = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    if (isValidObjectId(id)) {
-      const result = await deleteProductById(id);
+    const result = await deleteProductById(id);
 
-      if (result)
-        res.json({
-          msg: `El producto con id "${id}" ha sido eliminado`,
-        });
-      else
-        res.json({
-          msg: 'El producto con el id seleccionado no existe',
-        });
-    } else {
-      res.status(500).json({
-        msg: 'El id proporcionado no es un ObjectId válido para MongoDB',
+    if (result)
+      res.json({
+        msg: `El producto con id "${id}" ha sido eliminado`,
       });
-    }
+    else
+      res.json({
+        msg: 'El producto con el id seleccionado no existe',
+      });
   } catch (err: any) {
-    res.status(500).json({
+    res.status(400).json({
       error: err.message,
     });
   }
@@ -109,17 +95,12 @@ export const deleteProdByIdController = async (req: Request, res: Response) => {
 export const updateProdController = async (req: any, res: Response) => {
   try {
     const { id } = req.params;
-    if (isValidObjectId(id)) {
-      // Mando a la función toda la data válida que llega desde el middleware
-      const prod = await updateProduct(id, req.productData);
-      res.json(prod);
-    } else {
-      res.status(500).json({
-        msg: 'El id proporcionado no es un ObjectId válido para MongoDB',
-      });
-    }
+
+    // Mando a la función toda la data válida que llega desde el middleware
+    const prod = await updateProduct(id, req.productData);
+    res.json(prod);
   } catch (err: any) {
-    res.status(500).json({
+    res.status(400).json({
       error: err.message,
     });
   }

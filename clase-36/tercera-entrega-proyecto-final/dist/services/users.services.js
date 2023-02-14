@@ -9,47 +9,53 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllUsers = exports.findOneUser = exports.updateUser = exports.deleteUserById = exports.getUserById = exports.saveUser = void 0;
-const persistence_1 = require("../persistence/persistence");
+exports.matchPswd = exports.getAllUsers = exports.findOneUser = exports.updateUser = exports.deleteUserById = exports.getUserById = exports.saveUser = void 0;
+const daos_1 = require("../daos/daos");
 function saveUser(user) {
     return __awaiter(this, void 0, void 0, function* () {
-        const newUser = yield (0, persistence_1.save)('user', user);
+        const newUser = yield (0, daos_1.save)('user', user);
         return newUser;
     });
 }
 exports.saveUser = saveUser;
 function getUserById(id) {
     return __awaiter(this, void 0, void 0, function* () {
-        const user = yield (0, persistence_1.getById)('user', id);
+        const user = yield (0, daos_1.getById)('user', id);
         return user;
     });
 }
 exports.getUserById = getUserById;
 function deleteUserById(id) {
     return __awaiter(this, void 0, void 0, function* () {
-        const user = yield (0, persistence_1.deleteById)('user', id);
+        const user = yield (0, daos_1.deleteById)('user', id);
         return user;
     });
 }
 exports.deleteUserById = deleteUserById;
 function updateUser(id, user) {
     return __awaiter(this, void 0, void 0, function* () {
-        const userModified = yield (0, persistence_1.update)('user', id, user);
+        const userModified = yield (0, daos_1.update)('user', id, user);
         return userModified;
     });
 }
 exports.updateUser = updateUser;
 function findOneUser(field) {
     return __awaiter(this, void 0, void 0, function* () {
-        const user = yield (0, persistence_1.findOne)('user', field);
+        const user = yield (0, daos_1.findOne)('user', field);
         return user;
     });
 }
 exports.findOneUser = findOneUser;
 function getAllUsers() {
     return __awaiter(this, void 0, void 0, function* () {
-        const users = yield (0, persistence_1.getAll)('user');
+        const users = yield (0, daos_1.getAll)('user');
         return users;
     });
 }
 exports.getAllUsers = getAllUsers;
+function matchPswd(password1, password2) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield (0, daos_1.matchPassword)('user', password1, password2);
+    });
+}
+exports.matchPswd = matchPswd;

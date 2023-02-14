@@ -25,5 +25,14 @@
     "precio": 345,
     "stock": "40",
     "id": "64cf6913-3e64-4fab-8987-8f2fe2b06a1c"
+  },
+  {
+    "nombre": "Cerveza Andes origen rubia",
+    "descripcion": "Graduación alcohólica: 5.1 % Prohibida su venta a menores de 18 años",
+    "codigo": "56489498",
+    "foto": "https://http2.mlstatic.com/D_NQ_NP_718419-MLA44839770194_022021-W.webp",
+    "precio": 1459,
+    "stock": "50",
+    "id": "a8d94e59-8b02-4e39-b382-f6a75343326b"
   }
 ]

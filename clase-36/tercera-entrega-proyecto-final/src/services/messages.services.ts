@@ -36,9 +36,6 @@ export async function getAllNormalized() {
   const messages = await getAll('message');
   const normalizedData = normalize(messages, finalSchema);
 
-  console.log(messages);
-  console.log(normalizedData);
-
   return {
     messages: normalizedData,
   };

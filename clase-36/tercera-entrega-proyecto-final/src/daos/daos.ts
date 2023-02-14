@@ -1,14 +1,16 @@
-import config from '../config';
+// import config from '../config';
 
 import { DaoFactory } from './factory';
 
-let argv = config.PERSISTENCE;
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+
+const args: any = yargs(hideBin(process.argv)).default('dao', 'mongo').argv;
+
 let DAO: any;
 
-console.log(argv);
-
-if (argv === 'mongo') DAO = DaoFactory.create(argv, true);
-else DAO = DaoFactory.create(argv, false);
+if (args.dao === 'mongo') DAO = DaoFactory.create(args.dao, true);
+else DAO = DaoFactory.create(args.dao, false);
 
 let productsHandler: any;
 let cartsHandler: any;
@@ -23,13 +25,13 @@ if (DAO) {
 
 // Creo una instancia de DAO para usuarios para manejar con mongo exclusivamente,
 // porque sino no puedo implementar passport-local debido a que usuarios necesita la librería connect-mongo
-if (argv !== 'mongo') {
+if (args.dao !== 'mongo') {
   DAO = DaoFactory.create('mongo', false);
 }
 
 // constantes que utilizo para probar que no se vuelvan a crear nuevas instancias del DAO
-const DAO2 = DaoFactory.create(argv, false);
-const DAO3 = DaoFactory.create(argv, false);
+const DAO2 = DaoFactory.create(args.dao, false);
+const DAO3 = DaoFactory.create(args.dao, false);
 
 usersHandler = DAO.usersHandler();
 

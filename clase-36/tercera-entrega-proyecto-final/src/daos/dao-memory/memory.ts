@@ -98,8 +98,47 @@ export default class DaoMemory {
   }
 
   async save(document: any) {
-    const items = this.recurso;
-    items.push(document);
+    document.id = uuidv4();
+    this.recurso.push(document);
     return document;
+  }
+
+  async getById(id: string) {
+    try {
+      const item = this.recurso.find((e: any) => id === e.id);
+      if (item) return item;
+      return 0;
+    } catch (err) {
+      logger.error(`ERROR => ${err}`);
+    }
+  }
+
+  async update(id: string, item: any) {
+    try {
+      const index = this.recurso.findIndex((elem: any) => id === elem.id);
+
+      if (index < 0) return 0;
+
+      // Si el item buscado existe, lo reemplazo con el nuevo que viene por parámetro
+      this.recurso.splice(index, 1, item);
+      // Devuelvo el elemento modificado
+      return item;
+    } catch (err: any) {
+      // Devuelvo error a la api en caso de que no haya podido leer el archivo
+      logger.error(`ERROR => ${err}`);
+    }
+  }
+
+  async deleteById(id: string) {
+    try {
+      const index = this.recurso.findIndex((elem: any) => id === elem.id);
+
+      if (index < 0) return 0;
+
+      return this.recurso.splice(index, 1);
+    } catch (err: any) {
+      // Devuelvo error a la api en caso de que no haya podido leer el archivo
+      logger.error(`ERROR => ${err}`);
+    }
   }
 }

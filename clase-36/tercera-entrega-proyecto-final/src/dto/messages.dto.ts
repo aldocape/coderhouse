@@ -1,5 +1,3 @@
-import { Mensaje } from '../interfaces';
-
 export default class MessagesDTO {
   id: string;
   time: string;

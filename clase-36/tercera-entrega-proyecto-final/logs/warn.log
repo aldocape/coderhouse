@@ -87,3 +87,14 @@
 [31merror[39m [12-02-2023 21:12:36] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/carts.json'
 [31merror[39m [12-02-2023 21:15:42] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/carts.json'
 [31merror[39m [12-02-2023 21:24:30] | ERROR => Error: ENOENT: no such file or directory, open '/home/aldo/Documentos/proyectos/coderhouse/clase-36/tercera-entrega-proyecto-final/carts.json'
+[33mwarn[39m [13-02-2023 15:54:05] | Ruta inexistente
+[33mwarn[39m [13-02-2023 15:57:09] | Ruta inexistente
+[33mwarn[39m [13-02-2023 16:16:03] | Ruta inexistente
+[33mwarn[39m [13-02-2023 16:16:14] | Ruta inexistente
+[33mwarn[39m [13-02-2023 16:16:27] | Ruta inexistente
+[33mwarn[39m [13-02-2023 16:17:19] | Ruta inexistente
+[33mwarn[39m [13-02-2023 21:13:18] | Ruta inexistente
+[33mwarn[39m [13-02-2023 21:22:17] | Ruta inexistente
+[33mwarn[39m [13-02-2023 21:41:23] | Ruta inexistente
+[33mwarn[39m [13-02-2023 21:41:45] | Ruta inexistente
+[33mwarn[39m [13-02-2023 21:42:29] | Ruta inexistente

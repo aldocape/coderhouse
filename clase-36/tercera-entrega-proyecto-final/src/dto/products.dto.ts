@@ -1,5 +1,3 @@
-import { Producto } from '../interfaces';
-
 export default class ProductsDTO {
   id: string;
   nombre: string;

@@ -11,8 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateProdController = exports.deleteProdByIdController = exports.getProdByIdController = exports.getAllController = exports.saveController = void 0;
 const products_services_1 = require("../services/products.services");
-// Importo función para saber si se ingresa un ObjectId válido
-const tools_1 = require("../utils/tools");
 const saveController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { nombre, descripcion, codigo, foto, precio, stock } = req.productData;
@@ -31,7 +29,7 @@ const saveController = (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
     catch (err) {
-        res.status(500).json({
+        res.status(400).json({
             error: err.message,
         });
     }
@@ -50,7 +48,7 @@ const getAllController = (req, res) => __awaiter(void 0, void 0, void 0, functio
         }
     }
     catch (err) {
-        res.status(500).json({
+        res.status(400).json({
             error: err.message,
         });
     }
@@ -59,22 +57,15 @@ exports.getAllController = getAllController;
 const getProdByIdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        if ((0, tools_1.isValidObjectId)(id)) {
-            const product = yield (0, products_services_1.getProductById)(id);
-            if (!product)
-                res.status(404).json({
-                    msg: 'El producto no ha sido encontrado',
-                });
-            res.json(product);
-        }
-        else {
-            res.status(500).json({
-                msg: 'El id proporcionado no es un ObjectId válido para MongoDB',
+        const product = yield (0, products_services_1.getProductById)(id);
+        if (!product)
+            res.status(404).json({
+                msg: 'El producto no ha sido encontrado',
             });
-        }
+        res.json(product);
     }
     catch (err) {
-        res.status(500).json({
+        res.status(400).json({
             error: err.message,
         });
     }
@@ -83,25 +74,18 @@ exports.getProdByIdController = getProdByIdController;
 const deleteProdByIdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        if ((0, tools_1.isValidObjectId)(id)) {
-            const result = yield (0, products_services_1.deleteProductById)(id);
-            if (result)
-                res.json({
-                    msg: `El producto con id "${id}" ha sido eliminado`,
-                });
-            else
-                res.json({
-                    msg: 'El producto con el id seleccionado no existe',
-                });
-        }
-        else {
-            res.status(500).json({
-                msg: 'El id proporcionado no es un ObjectId válido para MongoDB',
+        const result = yield (0, products_services_1.deleteProductById)(id);
+        if (result)
+            res.json({
+                msg: `El producto con id "${id}" ha sido eliminado`,
             });
-        }
+        else
+            res.json({
+                msg: 'El producto con el id seleccionado no existe',
+            });
     }
     catch (err) {
-        res.status(500).json({
+        res.status(400).json({
             error: err.message,
         });
     }
@@ -110,19 +94,12 @@ exports.deleteProdByIdController = deleteProdByIdController;
 const updateProdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        if ((0, tools_1.isValidObjectId)(id)) {
-            // Mando a la función toda la data válida que llega desde el middleware
-            const prod = yield (0, products_services_1.updateProduct)(id, req.productData);
-            res.json(prod);
-        }
-        else {
-            res.status(500).json({
-                msg: 'El id proporcionado no es un ObjectId válido para MongoDB',
-            });
-        }
+        // Mando a la función toda la data válida que llega desde el middleware
+        const prod = yield (0, products_services_1.updateProduct)(id, req.productData);
+        res.json(prod);
     }
     catch (err) {
-        res.status(500).json({
+        res.status(400).json({
             error: err.message,
         });
     }

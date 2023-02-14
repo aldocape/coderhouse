@@ -10,38 +10,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateProduct = exports.deleteProductById = exports.getProductById = exports.getAllProducts = exports.saveProduct = void 0;
-const persistence_1 = require("../persistence/persistence");
+const daos_1 = require("../daos/daos");
 function saveProduct(product) {
     return __awaiter(this, void 0, void 0, function* () {
-        const prod = yield (0, persistence_1.save)('product', product);
+        const prod = yield (0, daos_1.save)('product', product);
         return prod;
     });
 }
 exports.saveProduct = saveProduct;
 function getAllProducts() {
     return __awaiter(this, void 0, void 0, function* () {
-        const products = yield (0, persistence_1.getAll)('product');
+        const products = yield (0, daos_1.getAll)('product');
         return products;
     });
 }
 exports.getAllProducts = getAllProducts;
 function getProductById(id) {
     return __awaiter(this, void 0, void 0, function* () {
-        const product = yield (0, persistence_1.getById)('product', id);
+        const product = yield (0, daos_1.getById)('product', id);
         return product;
     });
 }
 exports.getProductById = getProductById;
 function deleteProductById(id) {
     return __awaiter(this, void 0, void 0, function* () {
-        const product = yield (0, persistence_1.deleteById)('product', id);
+        const product = yield (0, daos_1.deleteById)('product', id);
         return product;
     });
 }
 exports.deleteProductById = deleteProductById;
 function updateProduct(id, product) {
     return __awaiter(this, void 0, void 0, function* () {
-        const productModified = yield (0, persistence_1.update)('product', id, product);
+        const productModified = yield (0, daos_1.update)('product', id, product);
         return productModified;
     });
 }

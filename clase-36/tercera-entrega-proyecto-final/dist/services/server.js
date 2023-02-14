@@ -12,6 +12,7 @@ const yargs_1 = __importDefault(require("yargs"));
 const helpers_1 = require("yargs/helpers");
 const logger_1 = __importDefault(require("../middlewares/logger"));
 const os_1 = __importDefault(require("os"));
+const products_dto_1 = __importDefault(require("../dto/products.dto"));
 const http = require('http');
 // Importo librería socket.io
 const io = require('socket.io');
@@ -34,7 +35,7 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/', index_1.default);
-exports.PORT = process.env.PORT || 8080;
+exports.PORT = args.port; // default: '8080'
 exports.MODE = args.mode; // default: 'fork'
 //Obtengo el numero de núcleos disponibles en mi PC
 exports.numCPUs = os_1.default.cpus().length;
@@ -75,8 +76,10 @@ const myWSServer = io(exports.myHTTPServer);
 myWSServer.on('connection', (socket) => {
     // Escucho cuando se emite evento 'newProduct' desde el form de carga de productos
     socket.on('newProduct', (product) => {
+        // Convierto el objeto usando DTO para que se muestre bien en el front
+        const productModified = new products_dto_1.default(product, args.dao === 'mongo');
         // Emito un evento para todos los sockets conectados
-        myWSServer.emit('eventProduct', product);
+        myWSServer.emit('eventProduct', productModified);
     });
     // Escucho cuando se emite evento de nuevo mensaje desde el form de chat en main.js
     socket.on('chatMessage', (userMsg) => {

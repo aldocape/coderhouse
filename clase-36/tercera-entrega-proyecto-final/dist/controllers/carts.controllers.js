@@ -34,7 +34,8 @@ const saveCartController = (req, res) => __awaiter(void 0, void 0, void 0, funct
             for (let i = 0; i < productsCart.length; i++) {
                 const prod = productsCart[i];
                 for (let j = 0; j < prod.cantidad; j++) {
-                    const item = new tools_1.ObjectId(prod.id);
+                    // const item = new ObjectId(prod.id);
+                    const item = prod.id;
                     products.push(item);
                 }
                 // Luego de guardar el id del producto en el array para la BD,

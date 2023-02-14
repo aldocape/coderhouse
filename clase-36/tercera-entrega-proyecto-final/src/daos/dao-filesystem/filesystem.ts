@@ -166,9 +166,7 @@ export default class DaoFileSystem {
       try {
         // Intento escribir los datos del nuevo array en el archivo
         await fs.promises.writeFile(filePath, JSON.stringify(info, null, 2));
-        return {
-          success: true,
-        };
+        return 1;
       } catch (err: any) {
         logger.error(`ERROR => ${err}`);
       }

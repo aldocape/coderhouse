@@ -10,33 +10,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllDenormalized = exports.getAllNormalized = exports.getAllMessages = exports.saveMessage = void 0;
-const persistence_1 = require("../persistence/persistence");
+const daos_1 = require("../daos/daos");
 // Importo métodos de librería normalizr para normalizar lo que llega de la BD
 const normalizr_1 = require("normalizr");
 const author = new normalizr_1.schema.Entity('author', {}, {
     idAttribute: 'email',
 });
 const message = new normalizr_1.schema.Entity('message', { author: author }, {
-    idAttribute: '_id',
+    idAttribute: 'id',
 });
 const finalSchema = [message];
 function saveMessage(message) {
     return __awaiter(this, void 0, void 0, function* () {
-        const msg = yield (0, persistence_1.save)('message', message);
+        const msg = yield (0, daos_1.save)('message', message);
         return msg;
     });
 }
 exports.saveMessage = saveMessage;
 function getAllMessages() {
     return __awaiter(this, void 0, void 0, function* () {
-        const messages = yield (0, persistence_1.getAll)('message');
+        const messages = yield (0, daos_1.getAll)('message');
         return messages;
     });
 }
 exports.getAllMessages = getAllMessages;
 function getAllNormalized() {
     return __awaiter(this, void 0, void 0, function* () {
-        const messages = yield (0, persistence_1.getAll)('message');
+        const messages = yield (0, daos_1.getAll)('message');
         const normalizedData = (0, normalizr_1.normalize)(messages, finalSchema);
         return {
             messages: normalizedData,

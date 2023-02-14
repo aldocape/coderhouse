@@ -12,6 +12,7 @@ import { hideBin } from 'yargs/helpers';
 import logger from '../middlewares/logger';
 
 import os from 'os';
+import ProductsDTO from '../dto/products.dto';
 
 const http = require('http');
 
@@ -44,7 +45,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use('/', mainRouter);
 
-export const PORT = process.env.PORT || 8080;
+export const PORT = args.port; // default: '8080'
 export const MODE = args.mode; // default: 'fork'
 
 //Obtengo el numero de núcleos disponibles en mi PC
@@ -97,9 +98,12 @@ const myWSServer = io(myHTTPServer);
 // Escucho evento 'connection' con socket.io
 myWSServer.on('connection', (socket: any) => {
   // Escucho cuando se emite evento 'newProduct' desde el form de carga de productos
-  socket.on('newProduct', (product: Producto) => {
+  socket.on('newProduct', (product: any) => {
+    // Convierto el objeto usando DTO para que se muestre bien en el front
+    const productModified = new ProductsDTO(product, args.dao === 'mongo');
+
     // Emito un evento para todos los sockets conectados
-    myWSServer.emit('eventProduct', product);
+    myWSServer.emit('eventProduct', productModified);
   });
 
   // Escucho cuando se emite evento de nuevo mensaje desde el form de chat en main.js

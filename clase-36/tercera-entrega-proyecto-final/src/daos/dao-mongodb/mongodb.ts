@@ -141,6 +141,10 @@ export default class DaoMongoDB {
             }
         }
         return doc;
+      } else {
+        return {
+          msg: 'El id proporcionado no es un ObjectId válido para MongoDB',
+        };
       }
     } catch (err) {
       logger.error(`ERROR => ${err}`);
@@ -152,6 +156,10 @@ export default class DaoMongoDB {
       if (isValidObjectId(id)) {
         const document = await this.model.findByIdAndDelete(id);
         return document;
+      } else {
+        return {
+          msg: 'El id proporcionado no es un ObjectId válido para MongoDB',
+        };
       }
     } catch (err) {
       logger.error(`ERROR => ${err}`);
@@ -169,6 +177,10 @@ export default class DaoMongoDB {
         const updatedDocument = await this.model.findOne();
 
         return updatedDocument;
+      } else {
+        return {
+          msg: 'El id proporcionado no es un ObjectId válido para MongoDB',
+        };
       }
     } catch (err) {
       logger.error(`ERROR => ${err}`);
