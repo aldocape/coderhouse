@@ -1,15 +1,13 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 
-import { Mensaje, Producto, Carrito } from '../interfaces';
+import { Mensaje, Carrito } from '../interfaces';
 import { formatMessage, HttpException } from '../utils/tools';
 
 import path from 'path';
 import mainRouter from '../routes/index';
 
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
-
 import logger from '../middlewares/logger';
+import config from '../config';
 
 import os from 'os';
 import ProductsDTO from '../dto/products.dto';
@@ -18,12 +16,6 @@ const http = require('http');
 
 // Importo librería socket.io
 const io = require('socket.io');
-
-// hideBin nos oculta el contenido del array _:[]
-const args: any = yargs(hideBin(process.argv))
-  .default('mode', 'fork')
-  .default('port', '8080').argv;
-const argv: any = yargs(process.argv).argv;
 
 const app: Express = express();
 
@@ -45,18 +37,18 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use('/', mainRouter);
 
-export const PORT = args.port; // default: '8080'
-export const MODE = args.mode; // default: 'fork'
+export const PORT = config.ARGS.port; // default: '8080'
+export const MODE = config.ARGS.mode; // default: 'fork'
 
 //Obtengo el numero de núcleos disponibles en mi PC
 export const numCPUs = os.cpus().length;
 
 const info = {
-  args,
+  args: config.ARGS,
   platform: process.platform,
   nodeversion: process.version,
   memory: JSON.stringify(process.memoryUsage().rss),
-  execPath: argv._[0],
+  execPath: config.ARGV._[0],
   proyectPath: process.cwd(),
   pid: process.pid,
   numCPUs,
@@ -100,7 +92,10 @@ myWSServer.on('connection', (socket: any) => {
   // Escucho cuando se emite evento 'newProduct' desde el form de carga de productos
   socket.on('newProduct', (product: any) => {
     // Convierto el objeto usando DTO para que se muestre bien en el front
-    const productModified = new ProductsDTO(product, args.dao === 'mongo');
+    const productModified = new ProductsDTO(
+      product,
+      config.ARGS.dao === 'mongo'
+    );
 
     // Emito un evento para todos los sockets conectados
     myWSServer.emit('eventProduct', productModified);
