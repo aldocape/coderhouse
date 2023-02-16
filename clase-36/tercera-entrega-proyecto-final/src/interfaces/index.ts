@@ -1,7 +1,3 @@
-// Definición de estructuras de datos
-
-import { ObjectId } from 'mongoose';
-
 export interface Producto {
   _id: string;
   nombre: string;

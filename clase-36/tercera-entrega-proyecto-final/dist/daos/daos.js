@@ -1,5 +1,4 @@
 "use strict";
-// import config from '../config';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -14,15 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.matchPassword = exports.encrypt = exports.findOne = exports.update = exports.deleteById = exports.getById = exports.getAll = exports.save = void 0;
+const config_1 = __importDefault(require("../config"));
 const factory_1 = require("./factory");
-const yargs_1 = __importDefault(require("yargs"));
-const helpers_1 = require("yargs/helpers");
-const args = (0, yargs_1.default)((0, helpers_1.hideBin)(process.argv)).default('dao', 'mongo').argv;
 let DAO;
-if (args.dao === 'mongo')
-    DAO = factory_1.DaoFactory.create(args.dao, true);
+const daoArgs = config_1.default.ARGS.dao;
+if (daoArgs === 'mongo')
+    DAO = factory_1.DaoFactory.create(daoArgs, true);
 else
-    DAO = factory_1.DaoFactory.create(args.dao, false);
+    DAO = factory_1.DaoFactory.create(daoArgs, false);
 let productsHandler;
 let cartsHandler;
 let usersHandler;
@@ -34,12 +32,12 @@ if (DAO) {
 }
 // Creo una instancia de DAO para usuarios para manejar con mongo exclusivamente,
 // porque sino no puedo implementar passport-local debido a que usuarios necesita la librería connect-mongo
-if (args.dao !== 'mongo') {
+if (daoArgs !== 'mongo') {
     DAO = factory_1.DaoFactory.create('mongo', false);
 }
 // constantes que utilizo para probar que no se vuelvan a crear nuevas instancias del DAO
-const DAO2 = factory_1.DaoFactory.create(args.dao, false);
-const DAO3 = factory_1.DaoFactory.create(args.dao, false);
+const DAO2 = factory_1.DaoFactory.create(daoArgs, false);
+const DAO3 = factory_1.DaoFactory.create(daoArgs, false);
 usersHandler = DAO.usersHandler();
 // En cada operación con la BD, trabajo individualmente con cada uno de los objetos instanciados
 function save(collection, obj) {

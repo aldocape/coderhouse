@@ -8,19 +8,13 @@ const express_1 = __importDefault(require("express"));
 const tools_1 = require("../utils/tools");
 const path_1 = __importDefault(require("path"));
 const index_1 = __importDefault(require("../routes/index"));
-const yargs_1 = __importDefault(require("yargs"));
-const helpers_1 = require("yargs/helpers");
 const logger_1 = __importDefault(require("../middlewares/logger"));
+const config_1 = __importDefault(require("../config"));
 const os_1 = __importDefault(require("os"));
 const products_dto_1 = __importDefault(require("../dto/products.dto"));
 const http = require('http');
 // Importo librería socket.io
 const io = require('socket.io');
-// hideBin nos oculta el contenido del array _:[]
-const args = (0, yargs_1.default)((0, helpers_1.hideBin)(process.argv))
-    .default('mode', 'fork')
-    .default('port', '8080').argv;
-const argv = (0, yargs_1.default)(process.argv).argv;
 const app = (0, express_1.default)();
 // Disponibilizo carpeta 'public' para acceder a los estilos css
 const publicPath = path_1.default.resolve(__dirname, '../../public');
@@ -35,16 +29,16 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/', index_1.default);
-exports.PORT = args.port; // default: '8080'
-exports.MODE = args.mode; // default: 'fork'
+exports.PORT = config_1.default.ARGS.port; // default: '8080'
+exports.MODE = config_1.default.ARGS.mode; // default: 'fork'
 //Obtengo el numero de núcleos disponibles en mi PC
 exports.numCPUs = os_1.default.cpus().length;
 const info = {
-    args,
+    args: config_1.default.ARGS,
     platform: process.platform,
     nodeversion: process.version,
     memory: JSON.stringify(process.memoryUsage().rss),
-    execPath: argv._[0],
+    execPath: config_1.default.ARGV._[0],
     proyectPath: process.cwd(),
     pid: process.pid,
     numCPUs: exports.numCPUs,
@@ -77,7 +71,7 @@ myWSServer.on('connection', (socket) => {
     // Escucho cuando se emite evento 'newProduct' desde el form de carga de productos
     socket.on('newProduct', (product) => {
         // Convierto el objeto usando DTO para que se muestre bien en el front
-        const productModified = new products_dto_1.default(product, args.dao === 'mongo');
+        const productModified = new products_dto_1.default(product, config_1.default.ARGS.dao === 'mongo');
         // Emito un evento para todos los sockets conectados
         myWSServer.emit('eventProduct', productModified);
     });

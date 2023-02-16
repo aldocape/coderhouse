@@ -5,6 +5,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+const yargs_1 = __importDefault(require("yargs"));
+const helpers_1 = require("yargs/helpers");
+// hideBin nos oculta el contenido del array _:[]
+const args = (0, yargs_1.default)((0, helpers_1.hideBin)(process.argv))
+    .default('mode', 'fork')
+    .default('port', '8080')
+    .default('dao', 'mongo').argv;
+const argv = (0, yargs_1.default)(process.argv).argv;
 exports.default = {
     MONGO_ATLAS_URL: process.env.MONGO_ATLAS_SRV ||
         'mongodb://aldo:123456@localhost:27017/ecommerce',
@@ -16,4 +24,6 @@ exports.default = {
     CEL: process.env.CEL || 'CEL',
     ADMIN_CEL: process.env.ADMIN_CEL || 'ADMIN_CEL',
     TWILIO_CELLPHONE: process.env.TWILIO_CELLPHONE || 'TWILIO_CELLPHONE',
+    ARGS: args,
+    ARGV: argv,
 };
