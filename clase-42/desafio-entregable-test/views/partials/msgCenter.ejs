@@ -1,0 +1,64 @@
+<div class="contenedor">
+  <h2 class="titulo_con_margen" id="titulo_centro_mensajes">
+    Centro de mensajes
+  </h2>
+  <form id="chat-form">
+    <input
+      type="email"
+      name="userEmail"
+      id="userEmail"
+      class="form-control w-50 my-2 mr-2"
+      placeholder="Tu e-mail aquí: alguien@ejemplo.com.ar"
+      required
+      oninvalid="this.setCustomValidity('Debe ingresar un valor con formato E-Mail');"
+      onchange="try{setCustomValidity('')}catch(e){};"
+      x-moz-errormessage="Debe ingresar un valor con formato E-Mail"
+    />
+    <input
+      type="text"
+      name="firstName"
+      id="firstName"
+      class="form-control w-50 my-2 mr-2"
+      placeholder="Tu nombre aquí"
+    />
+    <input
+      type="text"
+      name="lastName"
+      id="lastName"
+      class="form-control w-50 my-2 mr-2"
+      placeholder="Tu apellido aquí"
+    />
+    <input
+      type="number"
+      name="age"
+      id="age"
+      class="form-control w-50 my-2 mr-2"
+      placeholder="Tu edad aquí"
+    />
+    <input
+      type="text"
+      name="alias"
+      id="alias"
+      class="form-control w-50 my-2 mr-2"
+      placeholder="Tu alias aquí"
+    />
+    <input
+      type="text"
+      name="avatar"
+      id="avatar"
+      class="form-control w-50 my-2 mr-2 mb-4"
+      placeholder="Tu avatar aquí"
+    />
+    <hr />
+    <div class="chat-messages mt-4"></div>
+    <input
+      type="text"
+      name="userMessage"
+      id="userMessage"
+      class="inputMessage"
+      placeholder="Ingresá un mensaje"
+    />
+    <div id="msgChat"></div>
+    <button class="btn btn-primary mb-3 btnMessage">Enviar mensaje</button>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "Remera Mc Blumin",
+    "descripcion": "Remera manga corta de calce clásico y escote redondo. Realizada en flame liso. Lleva estampa tascani dnm sobre el centro delantero, en técnica plata con textura y relieve. 100% algodón",
+    "codigo": "4328432879",
+    "foto": "https://http2.mlstatic.com/D_NQ_NP_643797-MLA52852070826_122022-O.webp",
+    "precio": 7400,
+    "stock": "600",
+    "id": "170f5ad2-975e-4b7f-bfcd-6581caf07b76"
+  },
+  {
+    "nombre": "Remera mujer 47 street",
+    "descripcion": "Remera manga corta de jersey 30/1. Cuello redondo aplicado. Detalle de dobladillo en ruedo de manga. Largo a la cadera. Molderia cuadrada. Estampa centrada en frente.",
+    "codigo": "4327492387",
+    "foto": "https://http2.mlstatic.com/D_NQ_NP_812448-MLA52126391638_102022-O.webp",
+    "precio": 3959,
+    "stock": "500",
+    "id": "db526ccc-3ebf-49a6-b451-f6d08f71ab25"
+  }
+]

@@ -1,0 +1,78 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables del objeto global process</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <h2 class="titulo" style="text-align: center">
+      Información general del objeto process
+    </h2>
+    <div class="container">
+      <div class="contenedor">
+        <div class="mb-3 mt-5 row">
+          <label class="col-sm-3 col-form-label"
+            ><i><strong>Argumentos de entrada</strong></i></label
+          >
+          <div class="col-sm-9 mb-4"><%=JSON.stringify(info.args)%></div>
+        </div>
+        <div class="mb-3 mt-5 row">
+          <label class="col-sm-3 col-form-label"
+            ><i><strong>Nombre de la plataforma</strong></i></label
+          >
+          <div class="col-sm-9 mb-4"><%=info.platform%></div>
+        </div>
+        <div class="mb-3 mt-5 row">
+          <label class="col-sm-3 col-form-label"
+            ><i><strong>Versión de node.js</strong></i></label
+          >
+          <div class="col-sm-9 mb-4"><%=info.nodeversion%></div>
+        </div>
+        <div class="mb-3 mt-5 row">
+          <label class="col-sm-3 col-form-label"
+            ><i><strong>Memoria total reservada</strong></i></label
+          >
+          <div class="col-sm-9 mb-4"><%=info.memory%></div>
+        </div>
+        <div class="mb-3 mt-5 row">
+          <label class="col-sm-3 col-form-label"
+            ><i><strong>Path de ejecución</strong></i></label
+          >
+          <div class="col-sm-9 mb-4"><%=info.execPath%></div>
+        </div>
+        <div class="mb-3 mt-5 row">
+          <label class="col-sm-3 col-form-label"
+            ><i><strong>Process id</strong></i></label
+          >
+          <div class="col-sm-9 mb-4"><%=info.pid%></div>
+        </div>
+        <div class="mb-3 mt-5 row">
+          <label class="col-sm-3 col-form-label"
+            ><i><strong>Carpeta del proyecto</strong></i></label
+          >
+          <div class="col-sm-9 mb-4"><%=info.proyectPath%></div>
+        </div>
+
+        <div class="mb-3 mt-5 row">
+          <label class="col-sm-3 col-form-label"
+            ><i
+              ><strong
+                >Número de procesadores presentes en el servidor:</strong
+              ></i
+            ></label
+          >
+          <div class="col-sm-9 mb-4"><%=info.numCPUs%></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

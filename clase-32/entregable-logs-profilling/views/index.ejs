@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trabajo Práctico Entregable - Productos y carritos - MongoDB</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h3 style="text-align: center" class="mt-4 mb-4">
+        Aplicación e-commerce del curso de programación backend
+      </h3>
+
+      <h2 class="alert alert-success">
+        Bienvenid@, <%= nombre %>
+        <button id="btnLogout" style="float: right" class="btn btn-warning">
+          Cerrar sesión
+        </button>
+      </h2>
+
+      <%- include('./partials/formulario.ejs') %> <%-
+      include('./partials/productList.ejs') %> <%-
+      include('./partials/msgCenter.ejs') %>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+p {
+  margin-bottom: 0.5rem;
+}
+
+h2.titulo {
+  color: #2528d9;
+  margin: 20px 0;
+}
+
+h2.titulo_con_margen {
+  color: #2528d9;
+  margin: 20px 0 45px 0;
+}
+
+nav {
+  width: 90%;
+  margin: 20px auto;
+}
+.w-100 {
+  width: 100%;
+  margin: 0;
+}
+
+/* Propiedades css para mostrar con distinto color los elementos pares y los impares */
+
+.w-100:nth-child(even) {
+  background: hsl(0, 0%, 93%);
+}
+.w-100:nth-child(odd) {
+  background: hsl(0, 0%, 98%);
+}
+
+.columns:last-child {
+  margin-bottom: 0;
+}
+.column {
+  padding: 0.5%;
+  width: 33%;
+}
+
+/* Div para contener formulario de carga y listado de productos, y centro de mensajes */
+
+div.contenedor {
+  background-color: #eaeaea;
+  padding: 25px;
+  margin: 25px 0;
+}
+
+/* Elementos del formulario de centro de mensajes */
+
+div#msgProd {
+  color: red;
+}
+
+.inputMessage {
+  margin: 25px 0;
+}
+
+.btnMessage {
+  margin-top: 0.8rem;
+}
+
+#chat-form {
+  margin: 0;
+}
+
+/* Estilos para mensajes del chat */
+
+span.negritaAzul {
+  color: blue;
+  font-weight: bold;
+}
+
+span.normalMarron {
+  color: brown;
+}
+
+span.italicVerde {
+  color: green;
+  font-style: italic;
+}
+
+/* Productos */
+
+div.prod-item {
+  height: 350px;
+  overflow: hidden;
+}
+
+div.prod-item:hover {
+  height: auto;
+  overflow: auto;
+}
