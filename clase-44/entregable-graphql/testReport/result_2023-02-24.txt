@@ -1,0 +1,33 @@
+[32minfo[39m [24-02-2023 21:28:59] | Estamos en un test. Utilizaremos una BD de test
+[32minfo[39m [24-02-2023 21:28:59] | Iniciando instancia de MongoDB en Factory
+[32minfo[39m [24-02-2023 21:28:59] | Connecting...
+[32minfo[39m [24-02-2023 21:28:59] | Instancia de clase: product iniciada
+[32minfo[39m [24-02-2023 21:28:59] | Instancia de clase: cart iniciada
+[32minfo[39m [24-02-2023 21:28:59] | Instancia de clase: message iniciada
+[32minfo[39m [24-02-2023 21:28:59] | Instancia de clase: user iniciada
+
+
+  Comprobando que la API de productos funcione bien
+
+********* Comienzo TOTAL de Test *********
+[32minfo[39m [24-02-2023 21:29:01] | READY To Send Email
+[32minfo[39m [24-02-2023 21:29:02] | Database is connected to: test
+[32minfo[39m [24-02-2023 21:29:02] | Ruta '/api/productos' | Método 'GET'
+    ✔ Debería obtener lista vacía de productos de la BD con código 200 (413ms)
+[32minfo[39m [24-02-2023 21:29:03] | Ruta '/api/productos' | Método 'POST'
+[32minfo[39m [24-02-2023 21:29:03] | Ruta '/api/productos/63f9564f763a84cbd26162df' | Método 'GET'
+    ✔ Debería guardar un producto correctamente en la BD y luego encontrarlo por su id (448ms)
+[32minfo[39m [24-02-2023 21:29:03] | Ruta '/api/productos' | Método 'POST'
+[32minfo[39m [24-02-2023 21:29:03] | Ruta '/api/productos/63f9564f763a84cbd26162e2' | Método 'PUT'
+    ✔ Debería actualizar un producto correctamente (431ms)
+[32minfo[39m [24-02-2023 21:29:03] | Ruta '/api/productos' | Método 'POST'
+[32minfo[39m [24-02-2023 21:29:04] | Ruta '/api/productos/63f9564f763a84cbd26162e5' | Método 'DELETE'
+    ✔ Debería eliminar un producto de la BD (418ms)
+
+********* Fin TOTAL de Test *********
+[32minfo[39m [24-02-2023 21:29:04] | Disconnecting from database...
+
+
+  4 passing (5s)
+
+[32minfo[39m [24-02-2023 21:29:04] | Succesful disconnected

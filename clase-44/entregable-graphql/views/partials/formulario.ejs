@@ -1,0 +1,94 @@
+<div class="contenedor">
+  <h2 class="titulo">Ingrese un producto</h2>
+
+  <form id="product-form" class="row g-3">
+    <div class="mb-3 mt-5 row">
+      <label for="title" class="col-sm-2 col-form-label">Nombre (*)</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          name="nombre"
+          placeholder="Nombre del producto"
+          required
+          oninvalid="this.setCustomValidity('Por favor ingrese el nombre del producto');"
+          onchange="try{setCustomValidity('')}catch(e){};"
+          x-moz-errormessage="Por favor ingrese el nombre del producto"
+          autofocus
+        />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="price" class="col-sm-2 col-form-label">Descripción</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="descripcion"
+          name="descripcion"
+          placeholder="Descripción del producto"
+        />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="price" class="col-sm-2 col-form-label">Código (*)</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="codigo"
+          name="codigo"
+          placeholder="Código del producto"
+        />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="price" class="col-sm-2 col-form-label">Precio (*)</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="precio"
+          name="precio"
+          placeholder="Precio"
+          required
+          oninvalid="this.setCustomValidity('Por favor ingrese el precio del producto');"
+          onchange="try{setCustomValidity('')}catch(e){};"
+          x-moz-errormessage="Por favor ingrese el precio del producto"
+        />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="thumbnail" class="col-sm-2 col-form-label">Foto URL</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="foto"
+          name="foto"
+          placeholder="Ingrese aquí la URL"
+        />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="price" class="col-sm-2 col-form-label">Stock</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="stock"
+          name="stock"
+          placeholder="Stock"
+        />
+      </div>
+    </div>
+    <div id="msgProd"></div>
+    <div style="width: 100%">(*) = Campos obligatorios</div>
+    <div class="col-auto">
+      <button type="submit" id="btnSubmit" class="btn btn-success mt-3">
+        Crear producto
+      </button>
+    </div>
+  </form>
+</div>

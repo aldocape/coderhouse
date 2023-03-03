@@ -1,0 +1,44 @@
+<div class="contenedor">
+  <h2 class="titulo">Login de Usuario</h2>
+
+  <form action="/login" method="post" autocomplete="off">
+    <div class="mb-3 mt-5 row">
+      <label for="nombre" class="col-sm-3 col-form-label"
+        ><i><strong>Ingrese su E-mail</strong></i></label
+      >
+      <div class="col-sm-9 mb-4">
+        <input
+          id="username"
+          class="form-control"
+          type="email"
+          name="username"
+          required
+          oninvalid="this.setCustomValidity('Debe ingresar un valor con formato E-Mail');"
+          onchange="try{setCustomValidity('')}catch(e){};"
+          x-moz-errormessage="Debe ingresar un valor con formato E-Mail"
+        />
+      </div>
+      <label for="password" class="col-sm-3 col-form-label"
+        ><i><strong>Ingrese su contraseña</strong></i></label
+      >
+      <div class="col-sm-9">
+        <input
+          id="password"
+          class="form-control"
+          type="password"
+          name="password"
+          required
+        />
+      </div>
+    </div>
+    <div id="msgLogin" style="color: red; margin: 20px 0"><%=msg%></div>
+    <button class="btn btn-success mt-3 mb-3">Login</button>
+  </form>
+  <hr />
+  <button
+    class="btn btn-success mt-3"
+    onclick="document.location.href = '/register'"
+  >
+    Ir a Register
+  </button>
+</div>
