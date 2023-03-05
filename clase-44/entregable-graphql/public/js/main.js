@@ -46,16 +46,6 @@ productForm.addEventListener('submit', (event) => {
   const precio = document.getElementById('precio');
   const stock = document.getElementById('stock');
 
-  // Creo un objeto 'producto' con los datos obtenidos del form
-  const newProduct = {
-    nombre: nombre.value,
-    descripcion: descripcion.value,
-    codigo: codigo.value,
-    foto: foto.value,
-    precio: precio.value,
-    stock: stock.value,
-  };
-
   const mutation = {
     query: `mutation {
       saveProduct(data: {nombre:"${nombre.value}",descripcion:"${descripcion.value}",codigo:"${codigo.value}",foto:"${foto.value}",precio: ${precio.value},stock:${stock.value}}) { id nombre descripcion precio codigo stock foto } }`,

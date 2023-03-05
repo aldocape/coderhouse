@@ -13,6 +13,6 @@ En la ruta src/controllers/graphql/products.controllers.ts encontramos los contr
 
 Estos controladores trabajan con las funciones de manejo de persistencia que operan sobre la colección de productos, que al ser las mismas que las que usaba la API REST, nos permiten trabajar en distintas persistencias (memoria, archivo y mongodb). Este último DAO se carga por defecto, pero si queremos cambiar la persistencia iniciamos la aplicación con node dist/index.js --dao=memory, por ejemplo. Para usar filesystem, usar '--dao=file'.
 
-Por último, se ha reformado el frontend para soportar GraphQL y poder dialogar apropiadamente con el backend. Para esto se han modificado los request que utilizan Fetch en el archivo public/js/main.js, para que nos permitan realizar la carga de producto y obtener todos los productos, accediendo al endpoint '/graphql' (ver líneas 66 y 159).
+Por último, se ha reformado el frontend para soportar GraphQL y poder dialogar apropiadamente con el backend. Para esto se han modificado los request que utilizan Fetch en el archivo public/js/main.js, para que nos permitan realizar la carga de producto y obtener todos los productos, accediendo al endpoint '/graphql' (ver líneas 56 y 149).
 
 Se ha disponibilizado el endpoint '/graphql para utilizar GraphiQL con el fin de realizar la prueba funcional de los querys y las mutaciones.
