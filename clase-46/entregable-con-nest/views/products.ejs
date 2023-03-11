@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App de Productos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Vista de productos</h1>
+
+      <div class="contenedor">
+        <h2 class="titulo">Productos de la tienda E-commerce</h2>
+
+        <div class="row" id="tabla">
+          <% products.forEach((product) => { %>
+
+          <div class="col-sm-4">
+            <div class="card mt-4 prod-item">
+              <img
+                style="max-height: 300px"
+                src="<%=product.foto%>"
+                alt="Imagen del producto"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Nombre: <%=product.nombre%></h5>
+                <p class="card-text">Descripción: <%=product.descripcion%></p>
+                <p class="card-text">Precio: <%=product.precio%></p>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

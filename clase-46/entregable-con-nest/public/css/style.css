@@ -1,0 +1,34 @@
+p {
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  text-align: center;
+  color: darkslateblue;
+  margin: 30px auto;
+}
+
+h2.titulo {
+  color: #2528d9;
+  margin: 20px 0;
+}
+
+/* Div para contener formulario de carga y listado de productos, y centro de mensajes */
+
+div.contenedor {
+  background-color: #eaeaea;
+  padding: 25px;
+  margin: 25px 0;
+}
+
+/* Productos */
+
+div.prod-item {
+  height: 350px;
+  overflow: hidden;
+}
+
+div.prod-item:hover {
+  height: auto;
+  overflow: auto;
+}
