@@ -1,0 +1,9 @@
+<body>
+    <h1>Trabajo práctico entregable Deno</h1>
+    <p>Ingrese un color (en inglés):</p>
+    <form action="/colors" method="post">
+        
+        <input type="text" name="color" />
+        <input type="submit" value="Enviar" />
+    </form>
+</body>

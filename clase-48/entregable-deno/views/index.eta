@@ -1,0 +1,14 @@
+<html>
+<body style="background-color:#000">
+  <h1 style="color:#FFF">Trabajo práctico entregable Deno</h1>
+  <h2 style="color:#FFF">Colores:</h2>
+  <% if (it.colors) { %>
+  <ul>
+  <% it.colors.forEach((color) => { %>
+  <li style="color:<%=color%>"><%=color%></li>
+  <% }) %>
+  </ul>
+  <% } %>
+  <button onclick='window.location.href = "http://localhost:8080";'>Ir al form</button>
+</body>
+</html>
