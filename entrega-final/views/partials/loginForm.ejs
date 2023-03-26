@@ -1,0 +1,42 @@
+<div class="contenedor is-hidden" id="login-form">
+  <h2 class="mb-5">Iniciar sesión</h2>
+  <form>
+    <div class="mb-3 mt-3 row">
+      <label for="nombre" class="col-sm-3 col-form-label"
+        ><i><strong>Ingrese su E-mail</strong></i></label
+      >
+      <div class="col-sm-9 mb-4">
+        <input
+          id="username"
+          class="form-control"
+          type="email"
+          name="username"
+          required
+          oninvalid="this.setCustomValidity('Debe ingresar un valor con formato E-Mail');"
+          onchange="try{setCustomValidity('')}catch(e){};"
+          x-moz-errormessage="Debe ingresar un valor con formato E-Mail"
+        />
+      </div>
+      <label for="password" class="col-sm-3 col-form-label"
+        ><i><strong>Ingrese su contraseña</strong></i></label
+      >
+      <div class="col-sm-9">
+        <input
+          id="password"
+          class="form-control"
+          type="password"
+          name="password"
+          required
+        />
+      </div>
+    </div>
+    <div id="msgLogin" style="color: red; margin: 20px 0"></div>
+    <button
+      class="btn btn-success mt-3 mb-2"
+      onclick="event.preventDefault(); login()"
+    >
+      Login
+    </button>
+  </form>
+</div>
+<div id="datos_carrito" class="contenedor is-hidden"></div>

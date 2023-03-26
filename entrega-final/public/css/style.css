@@ -1,0 +1,97 @@
+.is-hidden {
+  display: none;
+}
+
+p {
+  margin: 0;
+}
+
+h2.titulo {
+  color: #2528d9;
+  margin: 20px 0;
+}
+
+h2.titulo_con_margen {
+  color: #2528d9;
+  margin: 20px 0 45px 0;
+}
+
+nav {
+  width: 90%;
+  margin: 20px auto;
+}
+
+div.msgAccess {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 15px;
+  background-color: #c5e5df;
+}
+
+/* Div para contener formulario de carga y listado de productos, y centro de mensajes */
+
+div.contenedor {
+  background-color: #eaeaea;
+  padding: 25px;
+  margin: 25px 0;
+}
+
+div.prod-item {
+  height: 450px;
+  overflow: hidden;
+}
+
+div.prod-item:hover {
+  height: auto;
+  overflow: auto;
+}
+.prod-item img {
+  max-height: 280px;
+}
+
+div#chat-bot {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  height: 350px;
+  width: 300px;
+  /* overflow: scroll; */
+  z-index: 1;
+  background-color: rgb(239, 241, 206);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.16);
+  border-radius: 8px;
+}
+
+div#header {
+  display: flex;
+  justify-content: space-between;
+}
+
+div#userPanel {
+  margin: 25px 0;
+}
+
+div#botMessages {
+  height: 210px;
+  overflow: auto;
+}
+
+div#botMessages p {
+  padding: 10px;
+}
+
+div#userMessages {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+input#message {
+  width: 200px;
+}
+
+button#chatButton,
+button#btnCart,
+input#direccion_entrega {
+  margin-left: 5px;
+}

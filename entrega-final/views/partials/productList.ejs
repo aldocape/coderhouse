@@ -1,0 +1,70 @@
+<div class="contenedor">
+  <h2 class="titulo">Lista de productos</h2>
+
+  <form id="product-list-form" class="row g-3">
+    <div class="row" id="tabla">
+      <% if (productos.length) { %> <% productos.forEach(product => {%>
+      <div class="col-sm-4">
+        <div class="card mt-4 prod-item">
+          <input
+            type="hidden"
+            id="input_nombre_<%=product.id%>"
+            value="<%=product.nombre%>"
+          />
+          <img
+            class="card-img-top"
+            src="<%=product.foto%>"
+            alt="Imagen del producto"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%=product.nombre%></h5>
+            <p class="card-text"><%=product.descripcion%></p>
+            <p class="card-text">Precio ARS: $<%=product.precioARS%></p>
+            <p class="card-text">Precio USD: $<%=product.precioUSD%></p>
+
+            <div class="cartOptions is-hidden">
+              <p class="card-text">
+                <input
+                  type="checkbox"
+                  id="<%=product.id%>"
+                  class="carritoCheck"
+                  onclick="verificarCheck('<%=product.id%>')"
+                />&nbsp;&nbsp;Agregar al carrito
+              </p>
+              <p
+                class="card-text"
+                id="input_<%=product.id%>"
+                style="display: none"
+              >
+                Hola soy el producto <%=product.id%><br />
+                Cantidad:&nbsp;&nbsp;<input
+                  type="number"
+                  id="input_cant_<%=product.id%>"
+                />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% }) %> <% } else { %>
+      <h3 id="sinProductos" style="margin: 20px 0; padding: 10px 0 0 8px">
+        No hay productos para mostrar
+      </h3>
+      <% } %>
+    </div>
+    <div id="btnCarrito" class="col-auto is-hidden">
+      Direccion de entrega:
+      <input type="text" name="direccion_entrega" id="direccion_entrega" />
+      <button
+        type="button"
+        id="btnCart"
+        class="btn btn-success"
+        onclick="event.preventDefault(); armarCarrito()"
+      >
+        Confirmar carrito
+      </button>
+      <div id="msgCart" class="mt-4"></div>
+    </div>
+  </form>
+</div>

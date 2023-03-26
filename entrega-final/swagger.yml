@@ -1,0 +1,761 @@
+openapi: 3.0.0
+info:
+  title: Entrega proyecto final curso de programación Backend
+  description: Documentación del proyecto E-Commerce del curso
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+  - url: https://mi-url-de-heroku.com
+    description: Production server
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identificador único de cada producto
+        nombre:
+          type: string
+          description: Nombre del producto
+        descripcion:
+          type: string
+          description: Descripción del producto
+        codigo:
+          type: string
+          description: Código de barras del producto
+        foto:
+          type: string
+          description: Foto descriptiva del producto
+        precio:
+          type: float
+          description: Precio del producto en pesos argentinos
+        stock:
+          type: number
+          description: Unidades en stock del producto
+      example:
+        id: 62df43581af04e56b1682fe4
+        nombre: Notebook Banghó Max L4
+        descripcion: Notebook Celeron de 14" 4gb RAM 120gb HD Windows 11
+        codigo: '5901234988462'
+        foto: https://http2.mlstatic.com/D_NQ_NP_649773-MLA48598959537_122021-O.webp
+        precio: 132999
+        stock: 25
+        createdAt: '2023-03-25T19:16:54.010Z'
+        updatedAt: '2023-03-25T19:16:54.010Z'
+    ProductDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identificador único de cada producto
+        nombre:
+          type: string
+          description: Nombre del producto
+        descripcion:
+          type: string
+          description: Descripción del producto
+        foto:
+          type: string
+          description: Foto descriptiva del producto
+        precioARS:
+          type: float
+          description: Precio del producto en pesos argentinos
+        precioUSD:
+          type: float
+          description: Precio del producto dólares estadounidenses
+        stock:
+          type: number
+          description: Unidades en stock del producto
+        hasStock:
+          type: boolean
+          description: Indica si nos queda stock del producto
+      example:
+        id: 62df43581af04e56b1682fe4
+        nombre: Notebook Banghó Max L4
+        descripcion: Notebook Celeron de 14" 4gb RAM 120gb HD Windows 11
+        foto: https://http2.mlstatic.com/D_NQ_NP_649773-MLA48598959537_122021-O.webp
+        precioARS: 132999
+        precioUSD: 335.01
+        hasStock: true
+        stock: 25
+    newProduct:
+      type: object
+      required:
+        - nombre
+        - codigo
+        - precio
+      properties:
+        nombre:
+          type: string
+          description: Nombre del producto
+        descripcion:
+          type: string
+          description: Descripción del producto
+        codigo:
+          type: string
+          description: Código de barras del producto
+        foto:
+          type: string
+          description: Foto descriptiva del producto
+        precio:
+          type: float
+          description: Precio del producto en pesos argentinos
+        stock:
+          type: number
+          description: Unidades en stock del producto
+      example:
+        nombre: Notebook Banghó Max L4
+        descripcion: Notebook Celeron de 14" 4gb RAM 120gb HD Windows 11
+        codigo: '5901234988462'
+        foto: https://http2.mlstatic.com/D_NQ_NP_649773-MLA48598959537_122021-O.webp
+        precio: 132999
+        stock: 25
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id del carrito
+        productos:
+          type: array
+          description: Productos del carrito
+          items:
+            type: object
+            properties:
+              prodId:
+                type: string
+                description: Id del producto del carrito
+              cantidad:
+                type: integer
+                description: Cantidad de productos
+        direccion_entrega:
+          type: string
+          description: Domicilio donde se entregarán los productos del carrito
+        createdAt:
+          type: string
+          description: Fecha de creación del carrito
+        updatedAt:
+          type: string
+          description: Fecha de última modificación del carrito
+      example:
+        id: 641db5419db1ad9df9aa88a1
+        productos:
+          - prodId: 641c4f3347a3d30dc28701f5
+            cantidad: 10
+        direccion_entrega: San Martín 2283
+        createdAt: '2023-03-24T14:35:45.458Z'
+        updatedAt: '2023-03-25T12:28:48.194Z'
+    newCart:
+      type: object
+      properties:
+        productos:
+          type: array
+          description: Productos del carrito
+          items:
+            type: object
+            properties:
+              prodId:
+                type: string
+                description: Id del producto del carrito
+              cantidad:
+                type: integer
+                description: Cantidad de productos
+        direccion_entrega:
+          type: string
+          description: Domicilio donde se entregarán los productos del carrito
+      example:
+        productos:
+          - prodId: 641c4f3347a3d30dc28701f5
+            cantidad: 10
+        direccion_entrega: San Martín 2283
+    Message:
+      type: object
+      properties:
+        time:
+          type: string
+          description: Fecha y hora del mensaje
+        message:
+          type: string
+          description: Texto del mensaje
+        user:
+          type: array
+          description: Información del usuario
+          items:
+            type: object
+            properties:
+              username:
+                type: string
+                description: E-mail del usuario
+              nombre:
+                type: string
+                description: Nombre del usuario del mensaje
+              direccion:
+                type: string
+                description: Dirección del usuario del mensaje
+              telefono:
+                type: string
+                description: Teléfono del usuario del mensaje
+      example:
+        id: 641eff35a94d8d8b3bd3f311
+        user:
+          - username: 'aldocape@gmail.com'
+            nombre: 'Aldo Capezzali'
+            direccion: 'San Martín 2413'
+            telefono: '2984279494'
+        time: '25/03/2023 11:03:33'
+        message: 'stock'
+    newMessage:
+      type: object
+      properties:
+        mensaje:
+          type: string
+          description: Texto del mensaje
+        chatBot:
+          type: boolean
+          description: Indica si el mensaje lo envía el usuario o el chatBot
+      example:
+        chatBot: false
+        message: 'carrito'
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identificador único de cada usuario
+        username:
+          type: string
+          description: E-mail del usuario
+        password:
+          type: string
+          description: Contraseña del usuario
+        admin:
+          type: boolean
+          description: Nos indica si el usuario es o no un administrador
+        nombre:
+          type: string
+          description: Nombre del usuario
+        direccion:
+          type: string
+          description: Domicilio del usuario
+        edad:
+          type: integer
+          description: Edad del usuario
+        telefono:
+          type: string
+          description: Teléfono del usuario
+        avatar:
+          type: string
+          description: Imagen que identifica al usuario
+        carrito:
+          type: string
+          description: id del carrito del usuario
+      example:
+        id: 62df43581af04e56b1682fe4
+        username: aldocape@gmail.com
+        password: '123456'
+        admin: true
+        nombre: Aldo Capezzali
+        direccion: San Martín 3839
+        edad: 40
+        telefono: 2984-1684984
+        avatar: https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/108.jpg
+        carrito: 641db5419db1ad9df9aa88a1
+    usrLogin:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: E-mail del usuario
+        password:
+          type: string
+          description: Contraseña del usuario
+      example:
+        username: aldocape@gmail.com
+        password: '123456'
+    usrLoginOK:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Token de validación de usuario
+        status:
+          type: string
+          description: Indica que el usuario está logueado
+        id:
+          type: string
+          description: Identificador único de cada usuario
+        username:
+          type: string
+          description: E-mail del usuario
+        password:
+          type: string
+          description: Contraseña del usuario
+        password2:
+          type: string
+          description: Contraseña repetida del usuario (para el signup)
+        admin:
+          type: boolean
+          description: Nos indica si el usuario es o no un administrador
+        nombre:
+          type: string
+          description: Nombre del usuario
+        direccion:
+          type: string
+          description: Domicilio del usuario
+        edad:
+          type: integer
+          description: Edad del usuario
+        telefono:
+          type: string
+          description: Teléfono del usuario
+        avatar:
+          type: string
+          description: Imagen que identifica al usuario
+        carrito:
+          type: string
+          description: id del carrito del usuario
+      example:
+        id: 62df43581af04e56b1682fe4
+        username: aldocape@gmail.com
+        password: '123456'
+        password2: '123456'
+        admin: true
+        nombre: Aldo Capezzali
+        direccion: San Martín 3839
+        edad: 40
+        telefono: 2984-1684984
+        avatar: https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/108.jpg
+        carrito: 641db5419db1ad9df9aa88a1
+        token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDFkYjU0MTlkYjFhZDlkZjlhYTg4YTMiLCJub21icmUiOiJBbGRvIENhcGV6emFsaSIsInVzZXJuYW1lIjoiYWxkb2NhcGVAZ21haWwuY29tIiwiYWRtaW4iOnRydWUsImlhdCI6MTY3OTc3NDU4MSwiZXhwIjoxNjc5Nzc4MTgxfQ.oq22LR9ezC8yDJT4tw5pPMNf_8ZiLtsmJOKstG0yWdc'
+        status: Usuario logueado
+    newUser:
+      type: object
+      required:
+        - username
+        - password
+        - nombre
+        - direccion
+      properties:
+        username:
+          type: string
+          description: E-mail del usuario
+        password:
+          type: string
+          description: Contraseña del usuario
+        password2:
+          type: string
+          description: Contraseña repetida del usuario (para el signup)
+        admin:
+          type: boolean
+          description: Nos indica si el usuario es o no un administrador
+        nombre:
+          type: string
+          description: Nombre del usuario
+        direccion:
+          type: string
+          description: Domicilio del usuario
+        edad:
+          type: integer
+          description: Edad del usuario
+        telefono:
+          type: string
+          description: Teléfono del usuario
+        avatar:
+          type: string
+          description: Imagen que identifica al usuario
+        carrito:
+          type: string
+          description: id del carrito del usuario
+      example:
+        username: aldocape@gmail.com
+        password: '123456'
+        password2: '123456'
+        admin: true
+        nombre: Aldo Capezzali
+        direccion: San Martín 3839
+        edad: 40
+        telefono: 2984-1684984
+        avatar: https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/108.jpg
+  securitySchemes:
+    bearerAuth: # Nombre del esquema de seguridad que utilizaremos (Bearer)
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /api/productos:
+    get:
+      summary: Obtiene todos los productos disponibles para su compra.
+      tags:
+        - Productos
+      responses:
+        '200':
+          description: Cada producto disponible.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductDTO'
+    post:
+      tags:
+        - Productos
+      security:
+        - bearerAuth: []
+      summary: Agrega nuevo producto a la base de datos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newProduct'
+        required: true
+      responses:
+        200:
+          description: Producto creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Error en la carga de datos
+  /api/productos/{productId}:
+    get:
+      summary: Devuelve un producto por ID.
+      tags:
+        - Productos
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: ID Del producto que queremos buscar.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDTO'
+    put:
+      summary: Edición de producto por ID.
+      tags:
+        - Productos
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: ID Del producto que queremos modificar.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newProduct'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+    delete:
+      summary: Elimina un producto por ID.
+      tags:
+        - Productos
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: ID Del producto que queremos eliminar.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Muestra que el producto ha sido eliminado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    description: Mensaje elemento eliminado
+                example:
+                  msg: El producto con id "{productId}" ha sido eliminado
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /api/carrito/{cartId}/productos:
+    get:
+      summary: Obtiene todos los productos del carrito con id = "cartId"
+      tags:
+        - Carritos
+      parameters:
+        - name: cartId
+          in: path
+          required: true
+          description: ID del carrito que queremos buscar.
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Devuelve el carrito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        '401':
+          description: Unauthorized
+    post:
+      tags:
+        - Carritos
+      parameters:
+        - name: cartId
+          in: path
+          required: true
+          description: ID del carrito al que vamos a agregarle productos.
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      summary: Agrega nuevo producto al carrito con id = "cartId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newCart'
+        required: true
+      responses:
+        200:
+          description: Producto agregado con éxito al carrito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        400:
+          description: Error en la carga de datos
+        401:
+          description: Unauthorized
+  /api/carrito/:
+    post:
+      tags:
+        - Carritos
+      security:
+        - bearerAuth: []
+      summary: Agrega nuevo carrito a la base de datos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newCart'
+        required: true
+      responses:
+        200:
+          description: Carrito creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        400:
+          description: Error en la carga de datos
+  /api/carrito/{cartId}:
+    delete:
+      summary: Elimina un carrito por ID.
+      tags:
+        - Carritos
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: cartId
+          in: path
+          required: true
+          description: ID Del carrito que queremos eliminar.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Muestra que el carrito ha sido eliminado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    description: Mensaje elemento eliminado
+                example:
+                  msg: El carrito con id "{cartId}" ha sido eliminado
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /api/carrito/{cartId}/productos/{productId}:
+    delete:
+      summary: Elimina un producto de un carrito, pasando por parámetro id de carrito y de producto
+      tags:
+        - Carritos
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: cartId
+          in: path
+          required: true
+          description: ID del carrito que contiene el producto que queremos eliminar.
+          schema:
+            type: string
+        - name: productId
+          in: path
+          required: true
+          description: ID del producto que queremos eliminar del carrito.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: El producto ha sido eliminado del carrito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /api/mensajes/{username}:
+    get:
+      summary: Obtiene todos los mensajes enviados y recibidos entre "{username}" y chatBot
+      tags:
+        - Mensajes
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: E-Mail del usuario que envió y recibió mensajes.
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Devuelve todos los mensajes entre un usuario y chatBot.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Message'
+  /api/mensajes/:
+    post:
+      tags:
+        - Mensajes
+      security:
+        - bearerAuth: []
+      summary: Agrega nuevo mensaje
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newMessage'
+        required: true
+      responses:
+        200:
+          description: Mensaje enviado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        400:
+          description: Error en la carga de datos
+  /api/usuarios:
+    get:
+      summary: Obtiene todos los usuarios de la Base de Datos.
+      tags:
+        - Usuarios
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Devuelve todos los usuarios.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: Usuario no autorizado
+  /login:
+    post:
+      tags:
+        - Usuarios
+      summary: Login de usuario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/usrLogin'
+        required: true
+      responses:
+        200:
+          description: Login OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/usrLoginOK'
+        401:
+          description: Usuario no autorizado
+  /signup:
+    post:
+      tags:
+        - Usuarios
+      summary: Creación de nuevo usuario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newUser'
+        required: true
+      responses:
+        '200':
+          description: Signup OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Response status signup OK
+                  msg:
+                    type: string
+                    description: Mensaje de usuario creado correctamente
+                  token:
+                    type: string
+                    description: Token del nuevo usuario creado
+                example:
+                  status: Signup OK
+                  msg: El usuario ha sido creado correctamente!
+                  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDFmNTU3OWFiNTRmODBjMjUzNmQ0YjQiLCJub21icmUiOiJBbGRvIENhcGV6emFsaSIsInVzZXJuYW1lIjoiYWxkb2NhcGU1QGdtYWlsLmNvbSIsImFkbWluIjp0cnVlLCJpYXQiOjE2Nzk3NzUwOTcsImV4cCI6MTY3OTc3ODY5N30.q79qPoRtTy4L446mkEjTn8s7_QZM7bKOk5shpDM_YBg
+        '400':
+          description: Bad request - Completar todos los campos // El E-Mail ya existe

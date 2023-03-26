@@ -1,0 +1,52 @@
+[31merror[39m [20-03-2023 16:12:16] | ERROR => ValidationError: productos.0.prodId: Path `prodId` is required., productos.1.prodId: Path `prodId` is required.
+[31merror[39m [21-03-2023 09:58:07] | jwt malformed
+[31merror[39m [21-03-2023 09:59:10] | jwt malformed
+[31merror[39m [21-03-2023 10:01:42] | jwt malformed
+[31merror[39m [22-03-2023 09:03:36] | jwt malformed
+[31merror[39m [22-03-2023 15:55:36] | jwt expired
+[31merror[39m [22-03-2023 16:00:48] | jwt expired
+[31merror[39m [22-03-2023 16:01:12] | jwt expired
+[31merror[39m [22-03-2023 16:01:19] | jwt expired
+[31merror[39m [22-03-2023 16:01:47] | jwt expired
+[31merror[39m [22-03-2023 16:02:49] | jwt expired
+[31merror[39m [22-03-2023 16:03:23] | jwt expired
+[31merror[39m [22-03-2023 16:05:53] | jwt expired
+[31merror[39m [22-03-2023 16:09:19] | jwt expired
+[31merror[39m [22-03-2023 16:09:30] | jwt expired
+[31merror[39m [22-03-2023 16:13:53] | jwt expired
+[31merror[39m [22-03-2023 17:20:17] | jwt expired
+[31merror[39m [22-03-2023 18:30:18] | jwt expired
+[31merror[39m [22-03-2023 19:54:50] | jwt expired
+[31merror[39m [22-03-2023 19:59:33] | jwt expired
+[31merror[39m [22-03-2023 20:16:22] | jwt expired
+[31merror[39m [22-03-2023 21:00:44] | jwt expired
+[31merror[39m [24-03-2023 10:04:46] | jwt expired
+[31merror[39m [24-03-2023 11:44:10] | ruta '/api/productos' método 'POST' no autorizada
+[31merror[39m [24-03-2023 11:44:15] | ruta '/api/productos' método 'POST' no autorizada
+[31merror[39m [24-03-2023 11:48:32] | jwt expired
+[31merror[39m [24-03-2023 11:49:32] | ruta '/api/productos' método 'PUT' no autorizada
+[31merror[39m [24-03-2023 15:53:28] | ERROR => MongooseError: Operation `products.find()` buffering timed out after 10000ms
+[31merror[39m [24-03-2023 16:02:12] | Hubo un error en el acceso a la base de datos de MongoDB
+[31merror[39m [24-03-2023 16:20:26] | jwt expired
+[31merror[39m [24-03-2023 16:58:46] | jwt malformed
+[31merror[39m [24-03-2023 19:18:36] | jwt expired
+[31merror[39m [24-03-2023 21:17:13] | jwt expired
+[31merror[39m [25-03-2023 09:28:10] | jwt expired
+[31merror[39m [25-03-2023 09:29:30] | jwt expired
+[31merror[39m [25-03-2023 09:59:31] | jwt expired
+[31merror[39m [25-03-2023 11:02:23] | jwt expired
+[31merror[39m [25-03-2023 11:10:45] | ERROR => CastError: Cast to string failed for value "{ user: { username: 'aldocape@gmail.com' } }" (type Object) at path "message" for model "message"
+[31merror[39m [25-03-2023 15:31:15] | jwt expired
+[31merror[39m [25-03-2023 15:57:52] | Illegal arguments: number, string
+[31merror[39m [25-03-2023 16:01:48] | Illegal arguments: number, string
+[31merror[39m [25-03-2023 16:01:55] | Illegal arguments: number, string
+[31merror[39m [25-03-2023 16:05:33] | invalid signature
+[31merror[39m [25-03-2023 16:05:37] | invalid signature
+[31merror[39m [25-03-2023 16:05:38] | invalid signature
+[31merror[39m [25-03-2023 17:02:26] | jwt expired
+[31merror[39m [25-03-2023 18:21:48] | jwt expired
+[31merror[39m [25-03-2023 19:58:07] | jwt expired
+[31merror[39m [25-03-2023 19:58:14] | jwt expired
+[31merror[39m [25-03-2023 21:01:06] | jwt expired
+[31merror[39m [25-03-2023 22:02:40] | jwt expired
+[31merror[39m [25-03-2023 22:02:45] | jwt expired

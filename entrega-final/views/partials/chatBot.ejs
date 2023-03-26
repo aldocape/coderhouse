@@ -1,0 +1,22 @@
+<div id="chat-bot" class="is-hidden">
+  <div style="background-color: rgb(219, 214, 206); margin-top: 8px">
+    <p style="text-align: center">Chat BOT</p>
+  </div>
+  <div id="botMessages"></div>
+  <div id="userMessages">
+    <form>
+      <div id="chatMsg"></div>
+      <hr />
+      <label id="usrChatLabel"></label><br />
+      <input type="text" name="message" id="message" />
+      <button
+        type="button"
+        class="btn btn-success"
+        id="chatButton"
+        onclick="event.preventDefault(); sendMessage()"
+      >
+        Enviar
+      </button>
+    </form>
+  </div>
+</div>
